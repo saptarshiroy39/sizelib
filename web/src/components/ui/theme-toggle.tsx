@@ -3,36 +3,22 @@
 import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useTheme } from "next-themes";
 import { useReducedMotion, AnimatePresence, motion } from "motion/react";
-import { useEffect, useSyncExternalStore, type ComponentPropsWithoutRef } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useSyncExternalStore,
+  type ComponentPropsWithoutRef,
+  type RefObject,
+} from "react";
+import { flushSync } from "react-dom";
 import { cn } from "@/lib/utils";
 
 export interface ThemeToggleProps
   extends Omit<ComponentPropsWithoutRef<"button">, "children" | "onClick"> {
   iconClassName?: string;
+  duration?: number;
 }
-
-const VT_STYLE_ID = "beui-theme-toggle-vt";
-
-const VT_CSS = `
-html[data-beui-vt="circle-blur"]::view-transition-old(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-html[data-beui-vt="circle-blur"]::view-transition-new(root) {
-  mix-blend-mode: normal;
-  animation: beui-circle-blur-reveal 700ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-@keyframes beui-circle-blur-reveal {
-  from {
-    clip-path: circle(0% at 100% 0%);
-    filter: blur(8px);
-  }
-  to {
-    clip-path: circle(150% at 100% 0%);
-    filter: blur(0px);
-  }
-}
-`;
 
 const BLUR_TRANSITION = { duration: 0.2, ease: "easeInOut" } as const;
 const SWAP_BLUR = "blur(8px)";
@@ -55,7 +41,29 @@ const ICON_VARIANTS = {
 
 const emptySubscribe = () => () => {};
 
-export function useThemeToggle() {
+function getCircleClipPaths(
+  cx: number,
+  cy: number,
+  maxRadius: number,
+  viewportWidth: number,
+  viewportHeight: number
+): [string, string] {
+  const toX = (x: number) => `${(x / viewportWidth) * 100}%`;
+  const toY = (y: number) => `${(y / viewportHeight) * 100}%`;
+  const point = (x: number, y: number) => `${toX(x)} ${toY(y)}`;
+  const toRadius = (r: number) =>
+    `${(r / (Math.hypot(viewportWidth, viewportHeight) / Math.SQRT2)) * 100}%`;
+
+  return [
+    `circle(0% at ${point(cx, cy)})`,
+    `circle(${toRadius(maxRadius)} at ${point(cx, cy)})`,
+  ];
+}
+
+export function useThemeToggle(
+  buttonRef?: RefObject<HTMLButtonElement | null>,
+  duration = 400
+) {
   const { setTheme, resolvedTheme } = useTheme();
   const reduce = useReducedMotion() ?? false;
   const mounted = useSyncExternalStore(
@@ -63,38 +71,121 @@ export function useThemeToggle() {
     () => true,
     () => false
   );
-
-  useEffect(() => {
-    if (document.getElementById(VT_STYLE_ID)) return;
-    const el = document.createElement("style");
-    el.id = VT_STYLE_ID;
-    el.textContent = VT_CSS;
-    document.head.appendChild(el);
-  }, []);
+  const isTransitioningRef = useRef(false);
+  const activeAnimRef = useRef<Animation | null>(null);
 
   const isDark = mounted && resolvedTheme === "dark";
 
-  const toggle = () => {
-    const next = isDark ? "light" : "dark";
+  const cancelAnim = useCallback(() => {
+    activeAnimRef.current?.cancel();
+    activeAnimRef.current = null;
+  }, []);
 
-    if (reduce || !("startViewTransition" in document)) {
-      setTheme(next);
+  useEffect(() => {
+    return () => {
+      cancelAnim();
+      const root = document.documentElement;
+      if (root.dataset.magicuiThemeVt !== "active") return;
+      delete root.dataset.magicuiThemeVt;
+      root.style.removeProperty("--magicui-theme-toggle-vt-duration");
+      root.style.removeProperty("--magicui-theme-vt-clip-from");
+    };
+  }, [cancelAnim]);
+
+  const toggle = useCallback(() => {
+    if (
+      isTransitioningRef.current ||
+      document.documentElement.dataset.magicuiThemeVt === "active"
+    ) {
       return;
     }
 
+    const next = isDark ? "light" : "dark";
+
+    const applyTheme = () => {
+      document.documentElement.classList.toggle("dark", next === "dark");
+      setTheme(next);
+    };
+
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => {
+        finished: Promise<void>;
+        ready: Promise<void>;
+      };
+    };
+
+    if (reduce || typeof doc.startViewTransition !== "function") {
+      applyTheme();
+      return;
+    }
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    let x = viewportWidth / 2;
+    let y = viewportHeight / 2;
+    if (buttonRef?.current) {
+      const { top, left, width, height } =
+        buttonRef.current.getBoundingClientRect();
+      x = left + width / 2;
+      y = top + height / 2;
+    }
+
+    const maxRadius = Math.hypot(
+      Math.max(x, viewportWidth - x),
+      Math.max(y, viewportHeight - y)
+    );
+
+    const clipPath = getCircleClipPaths(
+      x,
+      y,
+      maxRadius,
+      viewportWidth,
+      viewportHeight
+    );
+
     const root = document.documentElement;
-    root.dataset.beuiVt = "circle-blur";
+    root.dataset.magicuiThemeVt = "active";
+    root.style.setProperty(
+      "--magicui-theme-toggle-vt-duration",
+      `${duration}ms`
+    );
+    root.style.setProperty("--magicui-theme-vt-clip-from", clipPath[0]);
 
-    const vt = (
-      document as Document & {
-        startViewTransition(cb: () => void): { finished: Promise<void> };
-      }
-    ).startViewTransition(() => setTheme(next));
+    const cleanup = () => {
+      isTransitioningRef.current = false;
+      delete root.dataset.magicuiThemeVt;
+      root.style.removeProperty("--magicui-theme-toggle-vt-duration");
+      root.style.removeProperty("--magicui-theme-vt-clip-from");
+      cancelAnim();
+    };
 
-    vt.finished.finally(() => {
-      delete root.dataset.beuiVt;
+    isTransitioningRef.current = true;
+    const transition = doc.startViewTransition(() => {
+      flushSync(applyTheme);
     });
-  };
+
+    if (typeof transition?.finished?.finally === "function") {
+      transition.finished.finally(cleanup).catch(() => {});
+    } else {
+      cleanup();
+    }
+
+    transition?.ready
+      ?.then(() => {
+        const anim = document.documentElement.animate(
+          { clipPath },
+          {
+            duration,
+            easing: "ease-in-out",
+            fill: "forwards",
+            pseudoElement: "::view-transition-new(root)",
+          } as KeyframeAnimationOptions
+        );
+        activeAnimRef.current = anim;
+      })
+      .catch(() => {});
+  }, [buttonRef, cancelAnim, duration, isDark, reduce, setTheme]);
 
   return { isDark, mounted, toggle };
 }
@@ -102,12 +193,15 @@ export function useThemeToggle() {
 export function ThemeToggle({
   className,
   iconClassName,
+  duration = 400,
   ...rest
 }: ThemeToggleProps) {
-  const { isDark, mounted, toggle } = useThemeToggle();
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { isDark, mounted, toggle } = useThemeToggle(buttonRef, duration);
 
   return (
     <button
+      ref={buttonRef}
       type="button"
       aria-label={mounted && isDark ? "Switch to light mode" : "Switch to dark mode"}
       onClick={toggle}
