@@ -5,7 +5,6 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "sizelib"
 version = "0.4.0"
-
 description = "A Python Library for Calculating and Humanizing file sizes, times, frequencies & data transfer rates."
 authors = [{name = "Saptarshi Roy"}]
 license = "MIT"
@@ -13,7 +12,6 @@ readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []
 keywords = ["size", "bytes", "file-size", "time", "frequency", "freq", "rate", "bitrate", "bandwidth", "humanize", "utility", "formatting"]
-
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -40,8 +38,8 @@ package-data = {"sizelib" = ["py.typed"]}
 where = ["src"]
 
 [tool.ruff]
-target-version = "py38"
-line-length = 88
+line-length = 200
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "UP", "RUF"]
+ignore = ["E501"]
