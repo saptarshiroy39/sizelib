@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sizelib"
+version = "0.1.0"
+description = "A simple, pythonic library for working with and humanizing file sizes."
+authors = [{name = "Saptarshi Roy"}]
+license = "MIT"
+readme = "README.md"
+
+requires-python = ">=3.8"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/saptarshiroy39/sizelib"
+Homepage = "https://pypi.org/project/sizelib"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = ["sizelib"]
