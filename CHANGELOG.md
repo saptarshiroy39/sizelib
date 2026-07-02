@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-06-15
+
+### Added
+
+- Declared PEP 561 compliance by creating the `py.typed` marker file for inline types.
+- Configured `ruff` for linting and code formatting checks.
+- Expanded package metadata in `pyproject.toml` (keywords, classifiers, Bug Tracker link, and documentation URL).
+
+### Changed
+
+- Updated `pyproject.toml` to use modern `setuptools` automatic package discovery (package finder) with the `src` layout.
+
+### Removed
+
+- Custom `SizeLibError` and `FileTooLarge` exception declarations (simplifying the package to a pure utility library).
+
+### Fixed
+
+- Fixed an overflow/division bug in `humanize()` when formatting byte sizes that exceed the maximum unit limit (e.g. formatting `1024**9` now correctly returns `"1024 YiB"` instead of `"1 YiB"`).
+
 ## [0.1.0] - 2026-06-13
 
 ### Added

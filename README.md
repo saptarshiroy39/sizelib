@@ -57,21 +57,6 @@ print(humanize(TOTAL))            # Output: 2.49 GiB
 print(humanize(USER_QUOTA, base=10))  # Output: 50 GB
 ```
 
-`Exception Handling`
-
-```python
-from sizelib import FileTooLarge, size, humanize
-
-file_size = size.mib(12)
-
-try:
-    if file_size > MAX_UPLOAD_SIZE:
-        raise FileTooLarge(f"File size exceeds limit of {humanize(MAX_UPLOAD_SIZE)}")
-except FileTooLarge as e:
-    print(e)
-    # Output: File size exceeds limit of 10 MiB
-```
-
 ---
 
 ## ✨ _Features_
@@ -79,9 +64,8 @@ except FileTooLarge as e:
 | FEATURE                  | DESCRIPTION                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------- |
 | 📏 **Unit Helpers**      | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
-| 🧪 **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly)                                 |
+| 🧪 **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly)                                  |
 | ⚙️ **Custom Bases**      | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats                    |
-| 🛡️ **Structured Errors** | Exposes custom `SizeLibError` and `FileTooLarge` exceptions for validation                          |
 | ⚡ **Ultra Minimalism**  | Zero external dependencies with an optimized, lightweight iteration algorithm                       |
 
 ---
