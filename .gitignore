@@ -32,3 +32,12 @@ htmlcov/
 env/
 venv/
 ENV/
+
+# Local Testing / Temporary Data
+test/
+test.py
+test.ipynb
+data.csv
+debug_test.py
+*.back
+copy.*
