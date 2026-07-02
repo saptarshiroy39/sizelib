@@ -7,7 +7,7 @@ This reference guide demonstrates how to use `sizelib` for size calculations, un
 Import the core components from the package:
 
 ```python
-from sizelib import FileTooLarge, humanize, size
+from sizelib import humanize, size
 ```
 
 ## Size Helper Functions
@@ -43,21 +43,4 @@ print(humanize(TOTAL))            # Output: 2.49 GiB
 
 # Decimal formatting (base 10 / 1000)
 print(humanize(USER_QUOTA, base=10))  # Output: 50 GB
-```
-
----
-
-## Exception Handling
-
-Utilize the built-in exception classes to handle file size validation:
-
-```python
-file_size = size.mib(12)
-
-try:
-    if file_size > MAX_UPLOAD_SIZE:
-        raise FileTooLarge(f"File size exceeds limit of {humanize(MAX_UPLOAD_SIZE)}")
-except FileTooLarge as e:
-    print(e)
-    # Output: File size exceeds limit of 10 MiB
 ```
