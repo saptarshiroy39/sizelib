@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2026-06-19
+
+### Changed
+
+- Renamed internal modules `size.py` to `_size.py` and `humanize.py` to `_humanize.py` to denote them as internal implementation details, and updated imports in `__init__.py`.
+- Refactored `humanize()` logic to use a standard `while` loop instead of a `for-else` block for better readability.
+
+### Added
+
+- Updated documentation in `README.md` and `SDK.md` demonstrating that unit helpers fully support passing variables and expressions as arguments.
+
 ## [0.1.1] - 2026-06-15
 
 ### Added

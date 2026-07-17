@@ -13,12 +13,11 @@ def humanize(size_bytes: int | float, base: int = 2) -> str:
     else:
         raise ValueError("base must be 2 or 10")
 
-    for unit in units[:-1]:
-        if size_bytes < divisor:
-            break
+    unit_index = 0
+    while size_bytes >= divisor and unit_index < len(units) - 1:
         size_bytes /= divisor
-    else:
-        unit = units[-1]
+        unit_index += 1
+    unit = units[unit_index]
 
     if size_bytes == int(size_bytes):
         return f"{int(size_bytes)} {unit}"
