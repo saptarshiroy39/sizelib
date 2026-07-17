@@ -19,6 +19,10 @@ MAX_UPLOAD_SIZE = size.mib(10)   # 10 MiB (10485760 bytes)
 CACHE_LIMIT = size.gib(2)        # 2 GiB (2147483648 bytes)
 USER_QUOTA = size.gb(50)         # 50 GB (50000000000 bytes)
 
+# Variables and expressions are fully supported
+limit = 2
+custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)
+
 print(MAX_UPLOAD_SIZE)           # Output: 10485760
 print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
 ```
