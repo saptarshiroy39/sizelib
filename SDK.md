@@ -14,17 +14,31 @@ from sizelib import humanize, size
 
 Define constraints using either binary (base 2 / 1024) or decimal (base 10 / 1000) helper methods.
 
+- **Basic Const Definitions**
+
 ```python
-MAX_UPLOAD_SIZE = size.mib(10)   # 10 MiB (10485760 bytes)
-CACHE_LIMIT = size.gib(2)        # 2 GiB (2147483648 bytes)
-USER_QUOTA = size.gb(50)         # 50 GB (50000000000 bytes)
+from sizelib import size
 
-# Variables and expressions are fully supported
+MAX_UPLOAD_SIZE = size.mib(10)   # 10 MiB
+CACHE_LIMIT = size.gib(2)        # 2 GiB
+```
+
+- **Variables & Expressions**
+
+```python
+from sizelib import size
+
 limit = 2
-custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)
+custom_limit = size.gib(limit)   # 2 GiB
+```
 
-print(MAX_UPLOAD_SIZE)           # Output: 10485760
-print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
+- **Type Preservation Check**
+
+```python
+from sizelib import size
+
+print(type(size.mib(10)))  # Output: <class 'int'>
+print(type(size.kb(1.5)))  # Output: <class 'float'>
 ```
 
 > [!NOTE]
@@ -36,15 +50,32 @@ print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
 
 Convert raw byte values back into clean, readable strings using the `humanize()` function.
 
+- **Default Binary (Base 2)**
+
 ```python
-# Default binary formatting (base 2 / 1024)
-print(humanize(MAX_UPLOAD_SIZE))  # Output: 10 MiB
-print(humanize(CACHE_LIMIT))      # Output: 2 GiB
+from sizelib import humanize, size
 
-# Decimal values are formatted up to 2 decimal places
-TOTAL = CACHE_LIMIT + size.mib(500)
-print(humanize(TOTAL))            # Output: 2.49 GiB
+# Converts raw bytes to base-1024 string representation
+print(humanize(10485760))       # Output: "10 MiB"
+print(humanize(size.gib(2)))    # Output: "2 GiB"
+```
 
-# Decimal formatting (base 10 / 1000)
-print(humanize(USER_QUOTA, base=10))  # Output: 50 GB
+- **Auto-Precision & Floating Points**
+
+```python
+from sizelib import humanize, size
+
+# Auto-rounds and formats fractional sizes up to 2 decimal places
+total = size.gib(2) + size.mib(500)
+print(humanize(total))          # Output: "2.49 GiB"
+```
+
+- **Decimal Formatting (Base 10)**
+
+```python
+from sizelib import humanize, size
+
+# Uses base-1000 standard (e.g. GB instead of GiB)
+user_quota = size.gb(50)
+print(humanize(user_quota, base=10))  # Output: "50 GB"
 ```
