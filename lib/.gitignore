@@ -1,0 +1,30 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Environments
+.env
+venv/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Vercel
+.vercel
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+sizelib.egg-info/
+
+
+# Test
+test/
+test.py
+test.ipynb
+data.csv
+debug_test.py
+.*.back
