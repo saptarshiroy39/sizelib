@@ -1,36 +1,24 @@
-# Byte-compiled / optimized / DLL files
+# --- Python ---
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Distribution / packaging
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Testing / coverage
+.ipynb_checkpoints/
 .pytest_cache/
-.coverage
-htmlcov/
+.mypy_cache/
 
-# Environments
+# Distribution / Packaging
+dist/
+build/
+*.egg-info/
+lib/*.egg-info/
+
+# Environments & Secrets
 .env
-.venv
-env/
+.env.*
+!.env.example
 venv/
+.venv/
+env/
 ENV/
 
 # Local Testing / Temporary Data
@@ -41,3 +29,44 @@ data.csv
 debug_test.py
 *.back
 copy.*
+
+# --- Node.js & Next.js ---
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Next.js Build Output
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+*tsconfig.tsbuildinfo
+
+# Coverage / Testing
+coverage/
+
+# Logs & Debugging
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# --- System & IDEs ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --- Cloud & Deployments ---
+.vercel
