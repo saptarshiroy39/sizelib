@@ -1,7 +1,7 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/saptarshiroy39/sizelib/refs/heads/main/web/public/sizelib.svg" alt="📄" width="128">
+  <img src="https://raw.githubusercontent.com/saptarshiroy39/sizelib/refs/heads/main/web/public/Sizelib.svg" alt="📄" width="128">
   <br>
-  <b>sizelib</b>
+  <b>Sizelib</b>
 </h1>
 
 <p align="center">

@@ -83,18 +83,60 @@ export default function Search() {
     if (!q) return [];
 
     const list: SearchResult[] = [];
+    const seen = new Set<string>();
+
+    navigationItems.forEach((category) => {
+      const catMatch = category.title.toLowerCase().includes(q);
+
+      category.items.forEach((item) => {
+        const itemSlug = item.href.replace("/", "");
+        const itemTitle = item.title;
+        const page = docsData[itemSlug];
+        const pageTitle = page ? page.title : itemTitle;
+
+        const slugMatch = itemSlug.toLowerCase().includes(q);
+        const navTitleMatch = itemTitle.toLowerCase().includes(q);
+        const docPageTitleMatch = page ? page.title.toLowerCase().includes(q) : false;
+
+        if (catMatch || navTitleMatch || slugMatch || docPageTitleMatch) {
+          if (!seen.has(itemSlug)) {
+            seen.add(itemSlug);
+            
+            let matchedText = itemTitle;
+            if (catMatch) {
+              matchedText = `${category.title} > ${itemTitle}`;
+            } else if (docPageTitleMatch && !navTitleMatch) {
+              matchedText = pageTitle;
+            }
+
+            list.push({
+              slug: itemSlug,
+              pageTitle: pageTitle,
+              type: "title",
+              matchedText: matchedText,
+            });
+          }
+        }
+      });
+    });
 
     for (const [slug, page] of Object.entries(docsData)) {
       const pageTitle = page.title;
-
-      if (pageTitle.toLowerCase().includes(q)) {
-        list.push({
-          slug,
-          pageTitle,
-          type: "title",
-          matchedText: pageTitle,
-        });
+      if (pageTitle.toLowerCase().includes(q) || slug.toLowerCase().includes(q)) {
+        if (!seen.has(slug)) {
+          seen.add(slug);
+          list.push({
+            slug,
+            pageTitle,
+            type: "title",
+            matchedText: pageTitle,
+          });
+        }
       }
+    }
+
+    for (const [slug, page] of Object.entries(docsData)) {
+      const pageTitle = page.title;
 
       page.blocks.forEach((block) => {
         if (block.type === "paragraph") {
@@ -302,21 +344,14 @@ export default function Search() {
                       <span className="text-[10px] uppercase font-bold tracking-wider text-muted-foreground/80">
                         {result.pageTitle}
                       </span>
-                      {isTitleMatch && (
-                        <span className="text-[9px] px-1 py-0.5 bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-bold">
-                          Title Match
-                        </span>
-                      )}
                     </div>
 
-                    {!isTitleMatch && (
-                      <p className="text-xs text-foreground/80 leading-normal line-clamp-2">
-                        <Highlight
-                          text={getSnippet(result.matchedText, query)}
-                          query={query}
-                        />
-                      </p>
-                    )}
+                    <p className="text-xs text-foreground/80 leading-normal line-clamp-2">
+                      <Highlight
+                        text={isTitleMatch ? result.matchedText : getSnippet(result.matchedText, query)}
+                        query={query}
+                      />
+                    </p>
                   </div>
                 );
               })

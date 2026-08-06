@@ -13,7 +13,7 @@ export default function OG() {
         <div className="flex max-w-6xl flex-col items-center justify-center gap-4 text-center">
           <h1 className="mb-2 flex items-center justify-center gap-2 text-2xl leading-none font-bold">
             <Image
-              src="/sizelib.svg"
+              src="/Sizelib.svg"
               alt="Sizelib Logo"
               width={64}
               height={64}
