@@ -76,9 +76,9 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/sizelib.svg",
-    shortcut: "/sizelib.svg",
-    apple: "/sizelib.svg",
+    icon: "/Sizelib.svg",
+    shortcut: "/Sizelib.svg",
+    apple: "/Sizelib.svg",
   },
 
   alternates: {
