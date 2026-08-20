@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sizelib"
-version = "0.1.2"
+version = "0.1.3"
 description = "A simple, pythonic library for working with and humanizing file sizes."
 authors = [{name = "Saptarshi Roy"}]
 license = "MIT"
@@ -19,14 +19,16 @@ classifiers = [
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 
 [project.urls]
-Repository = "https://github.com/saptarshiroy39/sizelib"
-Homepage = "https://pypi.org/project/sizelib"
-Documentation = "https://sizelib.hirishi.in"
+"Repository" = "https://github.com/saptarshiroy39/sizelib"
+"Homepage" = "https://pypi.org/project/sizelib"
+"Documentation" = "https://sizelib.hirishi.in"
+"Changelog" = "https://github.com/saptarshiroy39/sizelib/blob/main/CHANGELOG.md"
 "Bug Tracker" = "https://github.com/saptarshiroy39/sizelib/issues"
 
 [tool.setuptools]
