@@ -5,15 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.1.2] - 2026-06-19
-
-### Changed
-
-- Renamed internal modules `size.py` to `_size.py` and `humanize.py` to `_humanize.py` to denote them as internal implementation details, and updated imports in `__init__.py`.
-- Refactored `humanize()` logic to use a standard `while` loop instead of a `for-else` block for better readability.
+## [0.1.3] - 2026-07-28
 
 ### Added
+- Added `.python-version` file declaration pinned to Python 3.13.
 
+### Changed
+- Updated PyPI package classifiers to officially support Python 3.13.
+
+## [0.1.2] - 2026-06-19
 - Updated documentation in `README.md` and `SDK.md` demonstrating that unit helpers fully support passing variables and expressions as arguments.
 
 ## [0.1.1] - 2026-06-15
