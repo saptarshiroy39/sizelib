@@ -88,10 +88,10 @@ export default function Page() {
 
       <ApiRenderer signature="sizelib.size.<helper>(value: int | float) -> int | float" />
 
-      <div className="my-4 overflow-x-auto border border-border">
+      <div className="my-4 overflow-x-auto border border-border bg-card rounded-lg overflow-hidden">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="bg-muted/50 border-b border-border">
+            <tr className="bg-muted/40 border-b border-border">
               <th className="p-3 font-bold text-muted-foreground uppercase">
                 Helper Method
               </th>
@@ -107,7 +107,7 @@ export default function Page() {
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.b(value)
               </td>
@@ -119,7 +119,7 @@ export default function Page() {
                 1
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.kb(value)
               </td>
@@ -131,7 +131,7 @@ export default function Page() {
                 1,000
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.mb(value)
               </td>
@@ -143,7 +143,7 @@ export default function Page() {
                 1,000,000
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.gb(value)
               </td>
@@ -155,7 +155,7 @@ export default function Page() {
                 1,000,000,000
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.tb(value)
               </td>
@@ -167,7 +167,7 @@ export default function Page() {
                 1,000,000,000,000
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.kib(value)
               </td>
@@ -179,7 +179,7 @@ export default function Page() {
                 1,024
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.mib(value)
               </td>
@@ -191,7 +191,7 @@ export default function Page() {
                 1,048,576
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.gib(value)
               </td>
@@ -203,7 +203,7 @@ export default function Page() {
                 1,073,741,824
               </td>
             </tr>
-            <tr className="hover:bg-muted/5">
+            <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.tib(value)
               </td>

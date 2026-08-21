@@ -20,7 +20,7 @@ export function CopyButton({ text }: { text: string }) {
   return (
     <button
       onClick={handleCopy}
-      className="p-1 border border-border bg-background text-muted-foreground hover:text-sidebar-primary hover:border-sidebar-primary/45 rounded-none transition-colors cursor-pointer"
+      className="p-1 border border-border bg-background text-muted-foreground hover:text-sidebar-primary hover:border-sidebar-primary/45 rounded-lg transition-colors cursor-pointer"
       title="Copy to clipboard"
     >
       {copied ? (
@@ -178,7 +178,7 @@ export function CodeBlockRenderer({
   });
 
   return (
-    <div className="my-4 border border-border bg-card font-mono text-sm leading-relaxed">
+    <div className="my-4 border border-border bg-card font-mono text-sm leading-relaxed rounded-lg overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/40">
         <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
           <IconCode className="h-3.5 w-3.5 text-sidebar-primary" />
@@ -196,7 +196,7 @@ export function CodeBlockRenderer({
 
 export function ApiRenderer({ signature }: { signature: string }) {
   return (
-    <div className="my-4 border border-border bg-card font-mono text-sm leading-relaxed">
+    <div className="my-4 border border-border bg-card font-mono text-sm leading-relaxed rounded-lg overflow-hidden">
       <div className="flex items-center justify-between px-4 py-2 border-b border-border bg-muted/40">
         <span className="text-xs font-bold text-muted-foreground flex items-center gap-1.5">
           <IconCode className="h-3.5 w-3.5 text-sidebar-primary" />

@@ -28,11 +28,11 @@ export default function Page() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
         {/* Card 1: PyPI Package */}
-        <div className="border border-border bg-card">
+        <div className="border border-border bg-card rounded-lg overflow-hidden">
           <div className="flex flex-col justify-between p-5 bg-muted/10 h-full">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted/40 text-emerald-500 border border-border rounded-none">
+                <div className="p-2 bg-muted/40 text-emerald-500 border border-border rounded-lg">
                   <IconBrandPython className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-base text-foreground">
@@ -49,7 +49,7 @@ export default function Page() {
                 href="https://pypi.org/project/sizelib"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-none border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
               >
                 <IconBrandPython className="h-4 w-4 text-emerald-500" />
                 <span>PyPI</span>
@@ -59,11 +59,11 @@ export default function Page() {
         </div>
 
         {/* Card 2: GitHub Repository */}
-        <div className="border border-border bg-card">
+        <div className="border border-border bg-card rounded-lg overflow-hidden">
           <div className="flex flex-col justify-between p-5 bg-muted/10 h-full">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted/40 text-foreground border border-border rounded-none">
+                <div className="p-2 bg-muted/40 text-foreground border border-border rounded-lg">
                   <IconBrandGithub className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-base text-foreground">
@@ -80,7 +80,7 @@ export default function Page() {
                 href="https://github.com/saptarshiroy39/sizelib"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-none border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
               >
                 <IconBrandGithub className="h-4 w-4" />
                 <span>GitHub</span>
@@ -90,11 +90,11 @@ export default function Page() {
         </div>
 
         {/* Card 3: Submit an Issue */}
-        <div className="border border-border bg-card">
+        <div className="border border-border bg-card rounded-lg overflow-hidden">
           <div className="flex flex-col justify-between p-5 bg-muted/10 h-full">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted/40 text-blue-500 border border-border rounded-none">
+                <div className="p-2 bg-muted/40 text-blue-500 border border-border rounded-lg">
                   <IconCircleDot className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-base text-foreground">
@@ -111,7 +111,7 @@ export default function Page() {
                 href="https://github.com/saptarshiroy39/sizelib/issues"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-none border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
               >
                 <IconCircleDot className="h-4 w-4 text-blue-500" />
                 <span>Issues</span>
@@ -121,11 +121,11 @@ export default function Page() {
         </div>
 
         {/* Card 4: Support sizelib */}
-        <div className="border border-border bg-card">
+        <div className="border border-border bg-card rounded-lg overflow-hidden">
           <div className="flex flex-col justify-between p-5 bg-muted/10 h-full">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <div className="p-2 bg-muted/40 text-rose-500 border border-border rounded-none">
+                <div className="p-2 bg-muted/40 text-rose-500 border border-border rounded-lg">
                   <IconHeart className="h-6 w-6" />
                 </div>
                 <h3 className="font-bold text-base text-foreground">
@@ -141,7 +141,7 @@ export default function Page() {
                 href="https://github.com/sponsors/saptarshiroy39"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-none border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border border-border bg-muted/40 hover:bg-muted/80 text-foreground transition-colors cursor-pointer w-fit h-8"
               >
                 <IconHeart className="h-4 w-4 text-rose-500" />
                 <span>Sponsor</span>
