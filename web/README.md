@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://pypi.org/project/sizelib"><b>sizelib</b></a> is a lightweight, type-safe Python Library for working with and humanizing file sizes. It offers clean, type-preserving size helpers (supporting both <code>int</code> and <code>float</code>) and loop-based human readable string conversions.
+  <a href="https://pypi.org/project/sizelib"><b>sizelib</b></a> is a lightweight, type-safe Python Library for working with and humanizing file sizes and time durations. It offers clean, type-preserving unit helpers (supporting both <code>int</code> and <code>float</code>) and loop-based human-readable string conversions.
 </p>
 
 <p align="center">
@@ -44,21 +44,44 @@ print(MAX_UPLOAD_SIZE)           # Output: 10485760
 print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
 ```
 
-`Humanize Byte Sizes`
+`Time Helper Functions`
 
 ```python
-from sizelib import humanize
+from sizelib import time
+
+TIMEOUT = time.s(30)          # 30 s
+CACHE_TTL = time.min(15)      # 900 s
+TOKEN_EXPIRY = time.hour(2)   # 7200 s
+WORKER_WAIT = time.ms(500)    # 0.5 s
+```
+
+`Humanize Byte Sizes (human_size)`
+
+```python
+from sizelib import human_size, size
 
 # Default binary formatting (base 2 / 1024)
-print(humanize(MAX_UPLOAD_SIZE))  # Output: 10 MiB
-print(humanize(CACHE_LIMIT))      # Output: 2 GiB
+print(human_size(MAX_UPLOAD_SIZE))  # Output: 10 MiB
+print(human_size(CACHE_LIMIT))      # Output: 2 GiB
 
 # Decimal values are formatted up to 2 decimal places
 TOTAL = CACHE_LIMIT + size.mib(500)
-print(humanize(TOTAL))            # Output: 2.49 GiB
+print(human_size(TOTAL))            # Output: 2.49 GiB
 
 # Decimal formatting (base 10 / 1000)
-print(humanize(USER_QUOTA, base=10))  # Output: 50 GB
+print(human_size(USER_QUOTA, base=10))  # Output: 50 GB
+```
+
+`Humanize Times (human_time)`
+
+```python
+from sizelib import human_time, time
+
+print(human_time(0.005))        # Output: 5 ms
+print(human_time(time.s(45)))   # Output: 45 s
+print(human_time(time.min(90))) # Output: 1.50 hour
+print(human_time(time.hour(2))) # Output: 2 hour
+print(human_time(time.day(1)))  # Output: 1 day
 ```
 
 ---
@@ -67,7 +90,8 @@ print(humanize(USER_QUOTA, base=10))  # Output: 50 GB
 
 | FEATURE                  | DESCRIPTION                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------- |
-| 📏 **Unit Helpers**      | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
+| 📏 **Size Helpers**      | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
+| ⏰ **Time Helpers**      | Clean scaling for duration units (`ms`, `s`, `min`, `hour`, `day`, `week`)                          |
 | 🧪 **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly)                                  |
 | ⚙️ **Custom Bases**      | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats                    |
 | ⚡ **Ultra Minimalism**  | Zero external dependencies with an optimized, lightweight iteration algorithm                       |
@@ -76,10 +100,10 @@ print(humanize(USER_QUOTA, base=10))  # Output: 50 GB
 
 ## 🏗️ _System Architecture_
 
-| #   | COMPONENT          | DESCRIPTION                                                     | STACK        |
-| --- | ------------------ | --------------------------------------------------------------- | ------------ |
-| 1️⃣  | **Sizelib Size**   | The math factor constants and unit calculation helper functions | **_Python_** |
-| 2️⃣  | **Sizelib Format** | The humanization formatting module for readable string units    | **_Python_** |
+| #   | COMPONENT               | DESCRIPTION                                                     | STACK        |
+| --- | ----------------------- | --------------------------------------------------------------- | ------------ |
+| 1️⃣  | **Sizelib Size & Time** | The math factor constants and unit calculation helper functions | **_Python_** |
+| 2️⃣  | **Sizelib Humanize**    | The humanization formatting modules for size and time units     | **_Python_** |
 
 ---
 

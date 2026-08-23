@@ -1,3 +1,4 @@
+# SIZE
 BYTE = 1
 
 KB = 1000
@@ -9,3 +10,11 @@ KIB = 1024
 MIB = 1024**2
 GIB = 1024**3
 TIB = 1024**4
+
+# TIME
+SEC = 1
+MS = SEC / 1000
+MIN = 60 * SEC
+HOUR = 60 * MIN
+DAY = 24 * HOUR
+WEEK = 7 * DAY

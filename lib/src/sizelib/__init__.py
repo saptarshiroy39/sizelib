@@ -1,7 +1,8 @@
 from . import _size as size
-from ._humanize import humanize
+from . import _time as time
+from ._human_size import human_size
+from ._human_time import human_time
 
-__version__ = "0.1.3"
+__version__ = "0.2.0"
 
-__all__ = ["size", "humanize", "__version__"]
-
+__all__ = ["size", "time", "human_size", "human_time", "__version__"]
