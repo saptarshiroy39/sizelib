@@ -1,4 +1,4 @@
-def humanize(size_bytes: int | float, base: int = 2) -> str:
+def human_size(size_bytes: int | float, base: int = 2) -> str:
     if size_bytes < 0:
         raise ValueError("Size cannot be negative")
     if size_bytes == 0:
@@ -14,11 +14,12 @@ def humanize(size_bytes: int | float, base: int = 2) -> str:
         raise ValueError("base must be 2 or 10")
 
     unit_index = 0
-    while size_bytes >= divisor and unit_index < len(units) - 1:
-        size_bytes /= divisor
+    val = float(size_bytes)
+    while unit_index < len(units) - 1 and val >= divisor:
+        val /= divisor
         unit_index += 1
     unit = units[unit_index]
 
-    if size_bytes == int(size_bytes):
-        return f"{int(size_bytes)} {unit}"
-    return f"{size_bytes:.2f} {unit}"
+    if val == int(val):
+        return f"{int(val)} {unit}"
+    return f"{val:.2f} {unit}"

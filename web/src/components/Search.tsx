@@ -96,12 +96,14 @@ export default function Search() {
 
         const slugMatch = itemSlug.toLowerCase().includes(q);
         const navTitleMatch = itemTitle.toLowerCase().includes(q);
-        const docPageTitleMatch = page ? page.title.toLowerCase().includes(q) : false;
+        const docPageTitleMatch = page
+          ? page.title.toLowerCase().includes(q)
+          : false;
 
         if (catMatch || navTitleMatch || slugMatch || docPageTitleMatch) {
           if (!seen.has(itemSlug)) {
             seen.add(itemSlug);
-            
+
             let matchedText = itemTitle;
             if (catMatch) {
               matchedText = `${category.title} > ${itemTitle}`;
@@ -122,7 +124,10 @@ export default function Search() {
 
     for (const [slug, page] of Object.entries(docsData)) {
       const pageTitle = page.title;
-      if (pageTitle.toLowerCase().includes(q) || slug.toLowerCase().includes(q)) {
+      if (
+        pageTitle.toLowerCase().includes(q) ||
+        slug.toLowerCase().includes(q)
+      ) {
         if (!seen.has(slug)) {
           seen.add(slug);
           list.push({
@@ -348,7 +353,11 @@ export default function Search() {
 
                     <p className="text-xs text-foreground/80 leading-normal line-clamp-2">
                       <Highlight
-                        text={isTitleMatch ? result.matchedText : getSnippet(result.matchedText, query)}
+                        text={
+                          isTitleMatch
+                            ? result.matchedText
+                            : getSnippet(result.matchedText, query)
+                        }
                         query={query}
                       />
                     </p>
