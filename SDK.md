@@ -56,10 +56,10 @@ Define time constraints cleanly in seconds.
 ```python
 from sizelib import time
 
-TIMEOUT = time.s(30)          # 30 s
-CACHE_TTL = time.min(15)      # 900 s
-TOKEN_EXPIRY = time.hour(2)   # 7200 s
-WORKER_WAIT = time.ms(500)    # 0.5 s
+TIMEOUT = time.s(30)        # 30 s
+CACHE_TTL = time.m(15)      # 900 s
+TOKEN_EXPIRY = time.h(2)    # 7200 s
+WORKER_WAIT = time.ms(500)  # 0.5 s
 ```
 
 ---
@@ -109,7 +109,7 @@ from sizelib import human_time, time
 
 print(human_time(0.005))        # Output: "5 ms"
 print(human_time(time.s(45)))   # Output: "45 s"
-print(human_time(time.min(90))) # Output: "1.50 hour"
-print(human_time(time.hour(2))) # Output: "2 hour"
-print(human_time(time.day(1)))  # Output: "1 day"
+print(human_time(time.m(90)))   # Output: "1.50 h"
+print(human_time(time.h(2)))    # Output: "2 h"
+print(human_time(time.d(1)))    # Output: "1 d"
 ```

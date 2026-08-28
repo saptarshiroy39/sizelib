@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sizelib"
-version = "0.2.0"
-description = "A simple, pythonic library for working with and humanizing file sizes and time durations."
+version = "0.2.1"
+description = "A Python Library for Calculating and Humanizing file sizes & times."
 authors = [{name = "Saptarshi Roy"}]
 license = "MIT"
 readme = "README.md"

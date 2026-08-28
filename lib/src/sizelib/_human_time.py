@@ -9,7 +9,7 @@ def human_time(seconds: int | float) -> str:
         unit = "ms"
     else:
         divisors = [60, 60, 24, 7]
-        units = ["s", "min", "hour", "day", "week"]
+        units = ["s", "m", "h", "d", "w"]
         unit_index = 0
         val = float(seconds)
         while unit_index < len(divisors) and val >= divisors[unit_index]:
