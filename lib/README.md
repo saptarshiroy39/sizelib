@@ -49,10 +49,10 @@ print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
 ```python
 from sizelib import time
 
-TIMEOUT = time.s(30)          # 30 s
-CACHE_TTL = time.min(15)      # 900 s
-TOKEN_EXPIRY = time.hour(2)   # 7200 s
-WORKER_WAIT = time.ms(500)    # 0.5 s
+TIMEOUT = time.s(30)        # 30 s
+CACHE_TTL = time.m(15)      # 900 s
+TOKEN_EXPIRY = time.h(2)    # 7200 s
+WORKER_WAIT = time.ms(500)  # 0.5 s
 ```
 
 `Humanize Byte Sizes (human_size)`
@@ -79,9 +79,9 @@ from sizelib import human_time, time
 
 print(human_time(0.005))        # Output: 5 ms
 print(human_time(time.s(45)))   # Output: 45 s
-print(human_time(time.min(90))) # Output: 1.50 hour
-print(human_time(time.hour(2))) # Output: 2 hour
-print(human_time(time.day(1)))  # Output: 1 day
+print(human_time(time.m(90)))   # Output: 1.50 h
+print(human_time(time.h(2)))    # Output: 2 h
+print(human_time(time.d(1)))    # Output: 1 d
 ```
 
 ---
@@ -91,7 +91,7 @@ print(human_time(time.day(1)))  # Output: 1 day
 | FEATURE                  | DESCRIPTION                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------- |
 | 📏 **Size Helpers**      | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
-| ⏰ **Time Helpers**      | Clean scaling for duration units (`ms`, `s`, `min`, `hour`, `day`, `week`)                          |
+| ⏰ **Time Helpers**      | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`)                                    |
 | 🧪 **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly)                                  |
 | ⚙️ **Custom Bases**      | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats                    |
 | ⚡ **Ultra Minimalism**  | Zero external dependencies with an optimized, lightweight iteration algorithm                       |

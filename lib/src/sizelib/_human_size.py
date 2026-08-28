@@ -11,7 +11,7 @@ def human_size(size_bytes: int | float, base: int = 2) -> str:
         divisor = 1000
         units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
     else:
-        raise ValueError("base must be 2 or 10")
+        raise ValueError("Base must be 2 or 10")
 
     unit_index = 0
     val = float(size_bytes)
