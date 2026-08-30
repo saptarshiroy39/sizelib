@@ -63,8 +63,8 @@ export const navigationItems = [
     title: "API Reference",
     items: [
       { title: "size - Size Helpers", href: "/size" },
-      { title: "time - Time Helpers", href: "/time" },
       { title: "human_size() - Format Bytes", href: "/human_size" },
+      { title: "time - Time Helpers", href: "/time" },
       { title: "human_time() - Format Times", href: "/human_time" },
     ],
   },
@@ -83,18 +83,17 @@ export const docsData: Record<string, DocPage> = {
     blocks: [
       {
         type: "paragraph",
-        text: "sizelib is a simple, pythonic library designed for calculating, converting, and humanizing file sizes and time durations. It offers a zero-overhead and highly readable API.",
+        text: "sizelib is a Python library for calculating and humanizing file sizes & times. It offers a zero-overhead and highly readable API.",
       },
       {
         type: "list",
         items: [
           "**Size Helper Functions –** Define constraints easily using binary (base 2 / 1024) or decimal (base 10 / 1000) helper methods.",
-          "**Time Helper Functions –** Define time units cleanly in seconds (`s`, `ms`, `min`, `hour`, `day`, `week`).",
-          "**Type Preservation –** All unit helper functions return integers when passed an integer value, preserving precise types for type-checkers and calculations.",
           "**Humanizing Byte Sizes –** Convert raw byte values back into clean, readable strings using `human_size()`.",
-          "**Humanizing Time Durations –** Convert raw second values into readable duration strings using `human_time()`.",
-          "**Dual Base Support –** Full support for binary base (e.g. KiB, MiB, GiB) and decimal base (e.g. KB, MB, GB) units.",
-          "**Zero Overhead & Dependencies –** Pure-Python library with absolutely no external dependencies.",
+          "**Time Helper Functions –** Define time units cleanly in seconds (`ms`, `s`, `m`, `h`, `d`, `w`).",
+          "**Humanizing Times –** Convert raw second values into readable duration strings using `human_time()`.",
+          "**Type Preservation –** Dynamically maintains input types (`int` or `float`) across all calculations.",
+          "**Zero Overhead & Dependencies –** Pure-Python library with zero external dependencies.",
         ],
       },
     ],
@@ -178,7 +177,7 @@ export const docsData: Record<string, DocPage> = {
       {
         type: "list",
         items: [
-          "**Time Scaling Helpers –** Methods like `ms()`, `s()`, `min()`, `hour()`, `day()`, `week()` return second-scaled calculations.",
+          "**Time Scaling Helpers –** Methods like `ms()`, `s()`, `m()`, `h()`, `d()`, `w()` return second-scaled calculations.",
           "**Type Preservation –** Maintains input types (`int` or `float`) for clean arithmetic.",
         ],
       },
@@ -192,7 +191,7 @@ export const docsData: Record<string, DocPage> = {
             name: "value",
             type: "int | float",
             required: true,
-            description: "The value to scale (e.g. number of hour).",
+            description: "The value to scale (e.g. number of hours).",
           },
         ],
         returns: {
@@ -204,7 +203,7 @@ export const docsData: Record<string, DocPage> = {
         type: "code",
         language: "python",
         title: "time Helpers - API",
-        code: `from sizelib import time\n\nTIMEOUT = time.s(30)          # 30 s\nCACHE_TTL = time.min(15)      # 900 s\nTOKEN_EXPIRY = time.hour(2)   # 7200 s\nWORKER_WAIT = time.ms(500)    # 0.5 s`,
+        code: `from sizelib import time\n\nTIMEOUT = time.s(30)        # 30 s\nCACHE_TTL = time.m(15)      # 900 s\nTOKEN_EXPIRY = time.h(2)    # 7200 s\nWORKER_WAIT = time.ms(500)  # 0.5 s`,
       },
     ],
   },
@@ -259,7 +258,7 @@ export const docsData: Record<string, DocPage> = {
       {
         type: "list",
         items: [
-          "**Duration Formatting –** Converts raw second values into readable duration strings like `500 ms`, `1 min`, `2 hour`, `1 day`.",
+          "**Duration Formatting –** Converts raw second values into readable duration strings like `500 ms`, `1 m`, `2 h`, `1 d`.",
           "**Max Unit Resolution –** Automatically selects the largest unit fitting the duration.",
         ],
       },
@@ -286,7 +285,7 @@ export const docsData: Record<string, DocPage> = {
         type: "code",
         language: "python",
         title: "human_time() - API",
-        code: `from sizelib import human_time, time\n\nprint(human_time(0.005))        # Output: 5 ms\nprint(human_time(time.s(45)))   # Output: 45 s\nprint(human_time(time.min(90))) # Output: 1.50 hour\nprint(human_time(time.hour(2))) # Output: 2 hour`,
+        code: `from sizelib import human_time, time\n\nprint(human_time(0.005))        # Output: 5 ms\nprint(human_time(time.s(45)))   # Output: 45 s\nprint(human_time(time.m(90)))   # Output: 1.50 h\nprint(human_time(time.h(2)))    # Output: 2 h`,
       },
     ],
   },

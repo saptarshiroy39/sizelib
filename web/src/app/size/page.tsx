@@ -82,7 +82,7 @@ export default function Page() {
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             float
           </code>{" "}
-          without casting) to avoid division inaccuracies.
+          without casting) to avoid arithmetic precision loss.
         </li>
       </ul>
 
@@ -111,7 +111,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.b(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Decimal</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1
               </td>
@@ -123,7 +123,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.kb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Decimal</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,000
               </td>
@@ -135,7 +135,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.mb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Decimal</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,000^2
               </td>
@@ -147,7 +147,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.gb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Decimal</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,000^3
               </td>
@@ -159,7 +159,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.tb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Decimal</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,000^4
               </td>
@@ -171,7 +171,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.kib(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Binary</td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,024
               </td>
@@ -183,7 +183,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.mib(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Binary</td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,024^2
               </td>
@@ -195,7 +195,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.gib(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Binary</td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,024^3
               </td>
@@ -207,7 +207,7 @@ export default function Page() {
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 size.tib(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">Binary</td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1,024^4
               </td>
