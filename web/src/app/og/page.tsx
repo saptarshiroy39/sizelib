@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 export default function OG() {
-  const row1 = ["size.kb", "size.gib", "humanize"];
+  const row1 = ["size.gib", "human_size", "time.h", "human_time"];
   const row2 = ["Python", "pip", "uv", "PyPI"];
 
   return (
@@ -23,12 +23,11 @@ export default function OG() {
           </h1>
 
           <h1 className="text-muted-foreground text-2xl font-bold tracking-tight">
-            A simple, pythonic library for working with and humanizing file
-            sizes
+            A Python Library for Calculating and Humanizing file sizes &amp; times.
           </h1>
 
           <h2 className="mb-4 text-3xl font-medium tracking-tight text-foreground text-center">
-            Humanizing Bytes • Preserves Types • Zero Overhead
+            Highly Readable • Preserves Types • Humanize
           </h2>
 
           <h3 className="flex flex-wrap items-center justify-center gap-2 font-semibold">

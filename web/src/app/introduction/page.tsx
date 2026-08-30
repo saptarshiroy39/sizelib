@@ -21,9 +21,8 @@ export default function Page() {
       <div className="h-px bg-border" />
 
       <p className="text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">
-        sizelib is a simple, pythonic library designed for calculating,
-        converting, and humanizing file sizes. It offers a zero-overhead and
-        highly readable API.
+        sizelib is a Python library for calculating and humanizing file sizes &amp;
+        times. It offers a zero-overhead and highly readable API.
       </p>
 
       <ul className="my-4 list-disc pl-6 text-sm text-muted-foreground space-y-6">
@@ -36,63 +35,73 @@ export default function Page() {
         </li>
         <li className="leading-relaxed whitespace-pre-wrap">
           <strong className="font-bold text-foreground/80">
-            Type Preservation –{" "}
-          </strong>
-          All unit helper functions return integers when passed an integer
-          value, preserving precise types for type-checkers and calculations.
-        </li>
-        <li className="leading-relaxed whitespace-pre-wrap">
-          <strong className="font-bold text-foreground/80">
             Humanizing Byte Sizes –{" "}
           </strong>
           Convert raw byte values back into clean, readable strings using the{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            humanize()
+            human_size()
           </code>{" "}
           function.
         </li>
         <li className="leading-relaxed whitespace-pre-wrap">
           <strong className="font-bold text-foreground/80">
-            Dual Base Support –{" "}
+            Time Helper Functions –{" "}
           </strong>
-          Full support for binary base (e.g.{" "}
+          Define time constraints cleanly in seconds using duration unit methods (
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            KiB
+            ms
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            MiB
+            s
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            GiB
-          </code>
-          ) and decimal base (e.g.{" "}
-          <code className="font-mono text-xs font-bold text-sidebar-primary">
-            KB
+            m
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            MB
+            h
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            GB
+            d
           </code>
-          ) units.
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            w
+          </code>
+          ).
         </li>
         <li className="leading-relaxed whitespace-pre-wrap">
           <strong className="font-bold text-foreground/80">
-            Variables &amp; Expressions –{" "}
+            Humanizing Times –{" "}
           </strong>
-          Fully supports using variables and complex expressions inside
-          calculations.
+          Convert raw second values into readable duration strings using the{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            human_time()
+          </code>{" "}
+          function.
+        </li>
+        <li className="leading-relaxed whitespace-pre-wrap">
+          <strong className="font-bold text-foreground/80">
+            Type Preservation –{" "}
+          </strong>
+          Dynamically maintains input types (
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            int
+          </code>{" "}
+          or{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            float
+          </code>
+          ) across all calculations.
         </li>
         <li className="leading-relaxed whitespace-pre-wrap">
           <strong className="font-bold text-foreground/80">
             Zero Overhead &amp; Dependencies –{" "}
           </strong>
-          Pure-Python library with absolutely no dependencies.
+          Pure-Python library with zero external dependencies.
         </li>
       </ul>
     </article>

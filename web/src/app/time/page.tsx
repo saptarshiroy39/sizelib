@@ -36,19 +36,19 @@ export default function Page() {
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            min()
+            m()
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            hour()
+            h()
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            day()
+            d()
           </code>
           , and{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            week()
+            w()
           </code>{" "}
           return second-scaled unit calculations.
         </li>
@@ -59,8 +59,12 @@ export default function Page() {
           Preserves input types (accepts and returns{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             int
-          </code>
-          Preserving precise type behavior).
+          </code>{" "}
+          or{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            float
+          </code>{" "}
+          without casting) to avoid arithmetic precision loss.
         </li>
       </ul>
 
@@ -87,7 +91,7 @@ export default function Page() {
                 time.ms(value)
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                0.001
+                1 / 1,000
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 0.001
@@ -106,21 +110,21 @@ export default function Page() {
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                time.min(value)
+                time.m(value)
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1 * 60
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
                 60
               </td>
-              <td className="p-3 text-foreground/80 leading-normal font-bold">
-                60
-              </td>
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                time.hour(value)
+                time.h(value)
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                3,600
+                1 * 60 * 60
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 3,600
@@ -128,10 +132,10 @@ export default function Page() {
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                time.day(value)
+                time.d(value)
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                86,400
+                1 * 60 * 60 * 24
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 86,400
@@ -139,10 +143,10 @@ export default function Page() {
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                time.week(value)
+                time.w(value)
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                604,800
+                1 * 60 * 60 * 24 * 7
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
                 604,800
@@ -155,7 +159,7 @@ export default function Page() {
       <CodeBlockRenderer
         language="python"
         title="time API - Usage"
-        code={`from sizelib import time\n\nTIMEOUT = time.s(30)          # 30 s\nCACHE_TTL = time.min(15)      # 900 s\nTOKEN_EXPIRY = time.hour(2)   # 7200 s\nWORKER_WAIT = time.ms(500)    # 0.5 s`}
+        code={`from sizelib import time\n\nTIMEOUT = time.s(30)        # 30 s\nCACHE_TTL = time.m(15)      # 900 s\nTOKEN_EXPIRY = time.h(2)    # 7200 s\nWORKER_WAIT = time.ms(500)  # 0.5 s`}
       />
     </article>
   );
