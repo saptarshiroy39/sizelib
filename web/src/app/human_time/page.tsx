@@ -32,15 +32,15 @@ export default function Page() {
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            1 min
+            1 m
           </code>
           ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            2 hour
+            2 h
           </code>
           , or{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
-            1 day
+            1 d
           </code>
           .
         </li>
@@ -61,8 +61,8 @@ export default function Page() {
 
 print(human_time(0.005))        # Output: 5 ms
 print(human_time(time.s(45)))   # Output: 45 s
-print(human_time(time.min(90))) # Output: 1.50 hour
-print(human_time(time.hour(2))) # Output: 2 hour`}
+print(human_time(time.m(90)))   # Output: 1.50 h
+print(human_time(time.h(2)))    # Output: 2 h`}
       />
     </article>
   );
