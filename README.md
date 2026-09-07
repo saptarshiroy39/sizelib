@@ -9,14 +9,23 @@
 </p>
 
 <p align="center">
-  <a href="https://pypi.org/project/sizelib"><b>🔗 <code>PyPI Package</code></b></a>
-  &nbsp;|&nbsp;
-  🆔 <code>pip install sizelib</code> or <code>uv add sizelib</code>
+  <a href="https://pypi.org/project/sizelib/">
+    <img alt="PyPI Version" src="https://img.shields.io/pypi/v/sizelib?color=royalblue">
+  </a>
+  <a href="https://github.com/saptarshiroy39/sizelib/releases">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/saptarshiroy39/sizelib?color=emerald">
+  </a>
+  <a href="https://pepy.tech/project/sizelib">
+    <img alt="PyPI Downloads" src="https://img.shields.io/pepy/dt/sizelib?color=goldenrod">
+  </a>
+  <a href="https://github.com/saptarshiroy39/sizelib/blob/main/LICENSE">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/saptarshiroy39/sizelib?color=crimson">
+  </a>
 </p>
 
 ---
 
-## 🐍 _SDK_
+## ✳️ _SDK_
 
 `Installation`
 
@@ -86,24 +95,24 @@ print(human_time(time.d(1)))    # Output: 1 d
 
 ---
 
-## ✨ _Features_
+## ✳️ _Features_
 
-| FEATURE                  | DESCRIPTION                                                                                         |
-| ------------------------ | --------------------------------------------------------------------------------------------------- |
-| 📏 **Size Helpers**      | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
-| ⏰ **Time Helpers**      | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`)                          |
-| 🧪 **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly)                                  |
-| ⚙️ **Custom Bases**      | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats                    |
-| ⚡ **Ultra Minimalism**  | Zero external dependencies with an optimized, lightweight iteration algorithm                       |
+| FEATURE | DESCRIPTION |
+| :---: | :---: |
+| **Size Helpers** | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
+| **Time Helpers** | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`) |
+| **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly) |
+| **Custom Bases** | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats |
+| **Ultra Minimalism** | Zero external dependencies with an optimized, lightweight iteration algorithm |
 
 ---
 
-## 🏗️ _System Architecture_
+## ✳️ _Architecture_
 
-| #   | COMPONENT          | DESCRIPTION                                                     | STACK        |
-| --- | ------------------ | --------------------------------------------------------------- | ------------ |
-| 1️⃣  | **Sizelib Size & Time** | The math factor constants and unit calculation helper functions | **_Python_** |
-| 2️⃣  | **Sizelib Humanize** | The humanization formatting modules for size and time units     | **_Python_** |
+| # | COMPONENT | DESCRIPTION | STACK |
+| :---: | :---: | :---: | :---: |
+| 1️⃣ | **Sizelib SDK** | Python library for size & time calculations and humanization | **_Python_** |
+| 2️⃣ | **Sizelib Docs** | Official documentation & web interface | **_Next.js_**, **_Tailwind_**, **_Vercel_** |
 
 ---
 
