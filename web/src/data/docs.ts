@@ -38,13 +38,12 @@ export interface ApiBlock {
   notes?: string;
 }
 
-export interface DiagramBlock {
-  type: "diagram";
-  diagramType: "rollback";
-}
-
 export type DocBlock =
-  ParagraphBlock | CodeBlock | ListBlock | TableBlock | ApiBlock | DiagramBlock;
+  | ParagraphBlock
+  | CodeBlock
+  | ListBlock
+  | TableBlock
+  | ApiBlock;
 
 export interface DocPage {
   title: string;
@@ -139,8 +138,8 @@ export const docsData: Record<string, DocPage> = {
       {
         type: "list",
         items: [
-          "**Binary Helpers –** Methods like `kib()`, `mib()`, `gib()`, `tib()` return 1024-based unit calculations.",
-          "**Decimal Helpers –** Methods like `b()`, `kb()`, `mb()`, `gb()`, `tb()` return 1000-based unit calculations.",
+          "**Binary Helpers –** Methods like `kib()`, `mib()`, `gib()`, `tib()`, `pib()`, `eib()`, `zib()`, `yib()` return 1024-based unit calculations.",
+          "**Decimal Helpers –** Methods like `b()`, `kb()`, `mb()`, `gb()`, `tb()`, `pb()`, `eb()`, `zb()`, `yb()` return 1000-based unit calculations.",
           "**Type-Safe Math –** Preserves type signatures (accepts and returns `int` or `float` accordingly).",
         ],
       },
@@ -245,10 +244,26 @@ export const docsData: Record<string, DocPage> = {
         },
       },
       {
+        type: "table",
+        headers: ["Base", "Divisor", "Unit Escalation Order"],
+        rows: [
+          [
+            "Base 2 (Binary)",
+            "1024",
+            "B -> KiB -> MiB -> GiB -> TiB -> PiB -> EiB -> ZiB -> YiB",
+          ],
+          [
+            "Base 10 (Decimal)",
+            "1000",
+            "B -> KB -> MB -> GB -> TB -> PB -> EB -> ZB -> YB",
+          ],
+        ],
+      },
+      {
         type: "code",
         language: "python",
         title: "human_size() - API",
-        code: `from sizelib import human_size, size\n\n# Default binary formatting (base 2 / 1024)\nprint(human_size(size.mib(10)))  # Output: 10 MiB\nprint(human_size(size.gib(2)))   # Output: 2 GiB\n\n# Decimal formatting (base 10 / 1000)\nprint(human_size(size.gb(50), base=10))  # Output: 50 GB`,
+        code: `from sizelib import human_size, size\n\n# Default binary formatting (base 2 / 1024)\nprint(human_size(10485760))              # Output: 10 MiB\nprint(human_size(1500000))               # Output: 1.43 MiB\nprint(human_size(size.gib(2.5)))          # Output: 2.50 GiB\n\n# Decimal formatting (base 10 / 1000)\nprint(human_size(5000000000, base=10))   # Output: 5 GB\nprint(human_size(1500000, base=10))      # Output: 1.50 MB\nprint(human_size(size.gb(50), base=10))  # Output: 50 GB`,
       },
     ],
   },

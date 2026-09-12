@@ -45,12 +45,24 @@ MAX_UPLOAD_SIZE = size.mib(10)   # 10 MiB (10485760 bytes)
 CACHE_LIMIT = size.gib(2)        # 2 GiB (2147483648 bytes)
 USER_QUOTA = size.gb(50)         # 50 GB (50000000000 bytes)
 
-# Variables and expressions are fully supported
+# Variables, expressions, and type preservation (int/float) are supported
 limit = 2
 custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)
+print(type(size.mib(10)))        # Output: <class 'int'>
+print(type(size.kb(1.5)))        # Output: <class 'float'>
+```
 
-print(MAX_UPLOAD_SIZE)           # Output: 10485760
-print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
+`Humanize Byte Sizes (human_size)`
+
+```python
+from sizelib import human_size, size
+
+# Default binary formatting (base 2 / 1024)
+print(human_size(10485760))             # Output: 10 MiB
+print(human_size(size.gib(2.5)))        # Output: 2.50 GiB
+
+# Decimal formatting (base 10 / 1000)
+print(human_size(size.gb(50), base=10)) # Output: 50 GB
 ```
 
 `Time Helper Functions`
@@ -62,23 +74,6 @@ TIMEOUT = time.s(30)        # 30 s
 CACHE_TTL = time.m(15)      # 900 s
 TOKEN_EXPIRY = time.h(2)    # 7200 s
 WORKER_WAIT = time.ms(500)  # 0.5 s
-```
-
-`Humanize Byte Sizes (human_size)`
-
-```python
-from sizelib import human_size, size
-
-# Default binary formatting (base 2 / 1024)
-print(human_size(MAX_UPLOAD_SIZE))  # Output: 10 MiB
-print(human_size(CACHE_LIMIT))      # Output: 2 GiB
-
-# Decimal values are formatted up to 2 decimal places
-TOTAL = CACHE_LIMIT + size.mib(500)
-print(human_size(TOTAL))            # Output: 2.49 GiB
-
-# Decimal formatting (base 10 / 1000)
-print(human_size(USER_QUOTA, base=10))  # Output: 50 GB
 ```
 
 `Humanize Times (human_time)`
@@ -99,7 +94,7 @@ print(human_time(time.d(1)))    # Output: 1 d
 
 | FEATURE | DESCRIPTION |
 | :---: | :---: |
-| **Size Helpers** | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `kib`, `mib`, `gib`, `tib`) |
+| **Size Helpers** | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `pb`, `eb`, `zb`, `yb`, `kib`, `mib`, `gib`, `tib`, `pib`, `eib`, `zib`, `yib`) |
 | **Time Helpers** | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`) |
 | **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly) |
 | **Custom Bases** | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats |

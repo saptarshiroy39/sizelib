@@ -54,17 +54,86 @@ export default function Page() {
 
       <ApiRenderer signature="sizelib.human_size(size_bytes: int | float, base: int = 2) -> str" />
 
+      <h3 className="text-sm font-bold text-foreground pt-2">
+        Output Unit Hierarchy Scale
+      </h3>
+      <div className="my-2 overflow-x-auto border border-border bg-card rounded-lg overflow-hidden">
+        <table className="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr className="bg-muted/40 border-b border-border">
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Base
+              </th>
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Divisor
+              </th>
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Unit Escalation Order
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                Base 2 (Binary)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1024
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-mono">
+                B &rarr; KiB &rarr; MiB &rarr; GiB &rarr; TiB &rarr; PiB &rarr; EiB &rarr; ZiB &rarr; YiB
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                Base 10 (Decimal)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1000
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-mono">
+                B &rarr; KB &rarr; MB &rarr; GB &rarr; TB &rarr; PB &rarr; EB &rarr; ZB &rarr; YB
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <CodeBlockRenderer
         language="python"
         title="human_size() - Usage"
         code={`from sizelib import human_size, size
 
 # Default binary formatting (base 2 / 1024)
-print(human_size(size.mib(10)))  # Output: 10 MiB
-print(human_size(size.gib(2)))   # Output: 2 GiB
+print(human_size(10485760))              # Output: 10 MiB
+print(human_size(1500000))               # Output: 1.43 MiB
+print(human_size(size.gib(2.5)))         # Output: 2.50 GiB
 
 # Decimal formatting (base 10 / 1000)
+print(human_size(5000000000, base=10))   # Output: 5 GB
+print(human_size(1500000, base=10))      # Output: 1.50 MB
 print(human_size(size.gb(50), base=10))  # Output: 50 GB`}
+      />
+
+      <CodeBlockRenderer
+        language="python"
+        title="human_size() - Edge Cases & Exceptions"
+        code={`from sizelib import human_size
+
+# Zero byte input
+print(human_size(0))                     # Output: 0 B
+
+# Negative values raise ValueError
+try:
+    human_size(-5)
+except ValueError as e:
+    print(e)                             # Output: Size cannot be negative
+
+# Invalid base parameter raises ValueError
+try:
+    human_size(100, base=5)
+except ValueError as e:
+    print(e)                             # Output: Base must be 2 or 10`}
       />
     </article>
   );

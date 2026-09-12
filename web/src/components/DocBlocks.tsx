@@ -58,16 +58,25 @@ const KEYWORDS = new Set([
   "finally",
 ]);
 const API_FNS = new Set([
-  "humanize",
+  "human_size",
+  "human_time",
   "b",
   "kb",
   "mb",
   "gb",
   "tb",
+  "pb",
+  "eb",
+  "zb",
+  "yb",
   "kib",
   "mib",
   "gib",
   "tib",
+  "pib",
+  "eib",
+  "zib",
+  "yib",
   "size",
 ]);
 const TYPES = new Set([
@@ -154,7 +163,7 @@ export function CodeBlockRenderer({
     if (isPython) {
       return (
         <span key={idx}>
-          {line === "" ? <br /> : tokenizePythonLine(line, idx)}
+          {line === "" ? null : tokenizePythonLine(line, idx)}
           {"\n"}
         </span>
       );
