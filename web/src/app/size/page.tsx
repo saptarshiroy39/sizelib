@@ -38,9 +38,25 @@ export default function Page() {
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             gib()
           </code>
-          , and{" "}
+          ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             tib()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            pib()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            eib()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            zib()
+          </code>
+          , and{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            yib()
           </code>{" "}
           return 1024-based unit calculations.
         </li>
@@ -64,9 +80,25 @@ export default function Page() {
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             gb()
           </code>
-          , and{" "}
+          ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             tb()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            pb()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            eb()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            zb()
+          </code>
+          , and{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            yb()
           </code>{" "}
           return 1000-based unit calculations.
         </li>
@@ -88,7 +120,144 @@ export default function Page() {
 
       <ApiRenderer signature="sizelib.size.<helper>(value: int | float) -> int | float" />
 
-      <div className="my-4 overflow-x-auto border border-border bg-card rounded-lg overflow-hidden">
+      <h3 className="text-sm font-bold text-foreground pt-2">
+        Binary Helpers (Base 2 / 1024)
+      </h3>
+      <div className="my-2 overflow-x-auto border border-border bg-card rounded-lg overflow-hidden">
+        <table className="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr className="bg-muted/40 border-b border-border">
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Helper Method
+              </th>
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Base
+              </th>
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Multiplier Scale
+              </th>
+              <th className="p-3 font-bold text-muted-foreground uppercase">
+                Value (e.g. for input 1)
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.b(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.kib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,024
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.mib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^2
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,048,576
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.gib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^3
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,073,741,824
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.tib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^4
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,099,511,627,776
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.pib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^5
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,125,899,906,842,624
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.eib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^6
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,152,921,504,606,846,976
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.zib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^7
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,180,591,620,717,411,303,424
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                size.yib(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                1,024^8
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                1,208,925,819,614,629,174,706,176
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 className="text-sm font-bold text-foreground pt-4">
+        Decimal Helpers (Base 10 / 1000)
+      </h3>
+      <div className="my-2 overflow-x-auto border border-border bg-card rounded-lg overflow-hidden">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
             <tr className="bg-muted/40 border-b border-border">
@@ -169,50 +338,50 @@ export default function Page() {
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                size.kib(value)
+                size.pb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                1,024
+                1,000^5
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                1,024
+                1,000,000,000,000,000
               </td>
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                size.mib(value)
+                size.eb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                1,024^2
+                1,000^6
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                1,048,576
+                1,000,000,000,000,000,000
               </td>
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                size.gib(value)
+                size.zb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                1,024^3
+                1,000^7
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                1,073,741,824
+                1,000,000,000,000,000,000,000
               </td>
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                size.tib(value)
+                size.yb(value)
               </td>
-              <td className="p-3 text-foreground/80 leading-normal">BIN (2)</td>
+              <td className="p-3 text-foreground/80 leading-normal">DEC (10)</td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
-                1,024^4
+                1,000^8
               </td>
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                1,099,511,627,776
+                1,000,000,000,000,000,000,000,000
               </td>
             </tr>
           </tbody>
@@ -248,7 +417,11 @@ custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)`}
 # Input types (int/float) are dynamically preserved
 MAX_UPLOAD_SIZE = size.mib(10)
 print(MAX_UPLOAD_SIZE)           # Output: 10485760
-print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>`}
+print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
+
+BUFFER_SIZE = size.kb(1.5)
+print(BUFFER_SIZE)               # Output: 1500.0
+print(type(BUFFER_SIZE))         # Output: <class 'float'>`}
       />
     </article>
   );
