@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2026-08-11
+
+### Added
+- Expanded binary unit helpers in `sizelib.size` with `pib()`, `eib()`, `zib()`, and `yib()` (up to $1024^8$ / Yotta binary).
+- Expanded decimal unit helpers in `sizelib.size` with `pb()`, `eb()`, `zb()`, and `yb()` (up to $1000^8$ / Yotta decimal).
+- Updated `human_size()` output unit escalation to support up to `YiB` (base 2) and `YB` (base 10).
+
+### Changed
+- Standardized binary-first helper definition and evaluation order across the entire library and documentation suite.
+
 ## [0.2.1] - 2026-08-08
 
 ### Changed
