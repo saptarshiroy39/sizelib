@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2026-08-11
+
+### Added
+- Added month scaling helpers in `sizelib.time`: `m28()`, `m29()`, `m30()`, `m31()` (for 28, 29, 30, and 31-day month second calculations).
+- Added year scaling helpers in `sizelib.time`: `y()` (365-day regular year) and `ly()` (366-day leap year).
+- Added dedicated `TIME_SDK.md` reference guide.
+
+### Changed
+- Reordered `sizelib.time` imported constants from smallest to highest unit scale (`MS` through `LEAP_YEAR`).
+- Enriched time SDK documentation and web pages (`/time` and `/human_time`) with full parameter details, unit hierarchy tables, type preservation, and edge case examples.
+
 ## [0.2.2] - 2026-08-11
 
 ### Added
