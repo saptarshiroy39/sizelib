@@ -41,15 +41,15 @@ uv add sizelib
 from sizelib import size
 
 # Define constraints using binary (base 2 / 1024) or decimal (base 10 / 1000) helper methods
-MAX_UPLOAD_SIZE = size.mib(10)   # 10 MiB (10485760 bytes)
-CACHE_LIMIT = size.gib(2)        # 2 GiB (2147483648 bytes)
-USER_QUOTA = size.gb(50)         # 50 GB (50000000000 bytes)
+MAX_UPLOAD_SIZE = size.mib(10)  # 10 MiB (10485760 bytes)
+CACHE_LIMIT = size.gib(2)  # 2 GiB (2147483648 bytes)
+USER_QUOTA = size.gb(50)  # 50 GB (50000000000 bytes)
 
 # Variables, expressions, and type preservation (int/float) are supported
 limit = 2
-custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)
-print(type(size.mib(10)))        # Output: <class 'int'>
-print(type(size.kb(1.5)))        # Output: <class 'float'>
+custom_limit = size.gib(limit)  # 2 GiB (2147483648 bytes)
+print(type(size.mib(10)))  # Output: <class 'int'>
+print(type(size.kb(1.5)))  # Output: <class 'float'>
 ```
 
 `Humanize Byte Sizes (human_size)`
@@ -58,11 +58,11 @@ print(type(size.kb(1.5)))        # Output: <class 'float'>
 from sizelib import human_size, size
 
 # Default binary formatting (base 2 / 1024)
-print(human_size(10485760))             # Output: 10 MiB
-print(human_size(size.gib(2.5)))        # Output: 2.50 GiB
+print(human_size(10485760))  # Output: 10 MiB
+print(human_size(size.gib(2.5)))  # Output: 2.50 GiB
 
 # Decimal formatting (base 10 / 1000)
-print(human_size(size.gb(50), base=10)) # Output: 50 GB
+print(human_size(size.gb(50), base=10))  # Output: 50 GB
 ```
 
 `Time Helper Functions`
@@ -70,10 +70,17 @@ print(human_size(size.gb(50), base=10)) # Output: 50 GB
 ```python
 from sizelib import time
 
-TIMEOUT = time.s(30)        # 30 s
-CACHE_TTL = time.m(15)      # 900 s
-TOKEN_EXPIRY = time.h(2)    # 7200 s
-WORKER_WAIT = time.ms(500)  # 0.5 s
+# Define time constraints cleanly in seconds (supports ms, s, m, h, d, w, m28..m31, y, ly)
+TIMEOUT = time.s(30)  # 30 s
+CACHE_TTL = time.m(15)  # 900 s
+TOKEN_EXPIRY = time.h(2)  # 7200 s
+FEB_NON_LEAP = time.m28(1)  # 2419200 s (28 days)
+
+# Variables, expressions, and type preservation (int/float) are supported
+limit = 5
+custom_timeout = time.m(limit)  # 300 s
+print(type(time.s(30)))  # Output: <class 'int'>
+print(type(time.s(1.5)))  # Output: <class 'float'>
 ```
 
 `Humanize Times (human_time)`
@@ -81,11 +88,13 @@ WORKER_WAIT = time.ms(500)  # 0.5 s
 ```python
 from sizelib import human_time, time
 
-print(human_time(0.005))        # Output: 5 ms
-print(human_time(time.s(45)))   # Output: 45 s
-print(human_time(time.m(90)))   # Output: 1.50 h
-print(human_time(time.h(2)))    # Output: 2 h
-print(human_time(time.d(1)))    # Output: 1 d
+# Duration formatting across ms, s, m, h, d, w
+print(human_time(0.005))  # Output: 5 ms
+print(human_time(time.s(45)))  # Output: 45 s
+print(human_time(time.m(90)))  # Output: 1.50 h
+
+# Auto-rounds and formats fractional durations up to 2 decimal places
+print(human_time(time.h(2.5)))  # Output: 2.50 h
 ```
 
 ---
@@ -95,7 +104,7 @@ print(human_time(time.d(1)))    # Output: 1 d
 | FEATURE | DESCRIPTION |
 | :---: | :---: |
 | **Size Helpers** | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `pb`, `eb`, `zb`, `yb`, `kib`, `mib`, `gib`, `tib`, `pib`, `eib`, `zib`, `yib`) |
-| **Time Helpers** | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`) |
+| **Time Helpers** | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`, `m28`, `m29`, `m30`, `m31`, `y`, `ly`) |
 | **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly) |
 | **Custom Bases** | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats |
 | **Ultra Minimalism** | Zero external dependencies with an optimized, lightweight iteration algorithm |
