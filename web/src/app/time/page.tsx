@@ -46,9 +46,33 @@ export default function Page() {
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             d()
           </code>
-          , and{" "}
+          ,{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             w()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            m28()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            m29()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            m30()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            m31()
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            y()
+          </code>
+          , and{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            ly()
           </code>{" "}
           return second-scaled unit calculations.
         </li>
@@ -152,14 +176,120 @@ export default function Page() {
                 604,800
               </td>
             </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                time.m28(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                28 days (86,400 * 28)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                2,419,200
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                time.m29(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                29 days (86,400 * 29)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                2,505,600
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                time.m30(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                30 days (86,400 * 30)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                2,592,000
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                time.m31(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                31 days (86,400 * 31)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                2,678,400
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                time.y(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                365 days (86,400 * 365)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                31,536,000
+              </td>
+            </tr>
+            <tr className="hover:bg-muted/20 transition-colors">
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                time.ly(value)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
+                366 days (86,400 * 366)
+              </td>
+              <td className="p-3 text-foreground/80 leading-normal font-bold">
+                31,622,400
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <CodeBlockRenderer
         language="python"
-        title="time API - Usage"
-        code={`from sizelib import time\n\nTIMEOUT = time.s(30)        # 30 s\nCACHE_TTL = time.m(15)      # 900 s\nTOKEN_EXPIRY = time.h(2)    # 7200 s\nWORKER_WAIT = time.ms(500)  # 0.5 s`}
+        title="time API - Basic Usage"
+        code={`from sizelib import time
+
+# Standard time unit helpers
+TIMEOUT = time.s(30)          # 30 s
+CACHE_TTL = time.m(15)        # 900 s
+TOKEN_EXPIRY = time.h(2)      # 7200 s
+
+# Month duration helpers (28, 29, 30, and 31-day months)
+FEB_NON_LEAP = time.m28(1)    # 2419200 s (28 days)
+FEB_LEAP = time.m29(1)        # 2505600 s (29 days)
+SHORT_MONTH = time.m30(1)     # 2592000 s (30 days)
+LONG_MONTH = time.m31(1)      # 2678400 s (31 days)
+
+# Year duration helpers (regular and leap years)
+REGULAR_YEAR = time.y(1)      # 31536000 s (365 days)
+LEAP_YEAR = time.ly(1)        # 31622400 s (366 days)`}
+      />
+
+      <CodeBlockRenderer
+        language="python"
+        title="time API - Variables & Expressions"
+        code={`from sizelib import time
+
+# Variables and expressions are fully supported
+limit = 5
+custom_timeout = time.m(limit)   # 300 s`}
+      />
+
+      <CodeBlockRenderer
+        language="python"
+        title="time API - Type Preservation"
+        code={`from sizelib import time
+
+# Input types (int/float) are dynamically preserved
+TIMEOUT = time.s(30)
+print(TIMEOUT)           # Output: 30
+print(type(TIMEOUT))     # Output: <class 'int'>
+
+INTERVAL = time.s(1.5)
+print(INTERVAL)          # Output: 1.5
+print(type(INTERVAL))    # Output: <class 'float'>`}
       />
     </article>
   );
