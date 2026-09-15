@@ -176,7 +176,7 @@ export const docsData: Record<string, DocPage> = {
       {
         type: "list",
         items: [
-          "**Time Scaling Helpers –** Methods like `ms()`, `s()`, `m()`, `h()`, `d()`, `w()` return second-scaled calculations.",
+          "**Time Scaling Helpers –** Methods like `ms()`, `s()`, `m()`, `h()`, `d()`, `w()`, `m28()`, `m29()`, `m30()`, `m31()`, `y()`, `ly()` return second-scaled calculations.",
           "**Type Preservation –** Maintains input types (`int` or `float`) for clean arithmetic.",
         ],
       },
@@ -199,10 +199,32 @@ export const docsData: Record<string, DocPage> = {
         },
       },
       {
+        type: "table",
+        headers: [
+          "Helper Method",
+          "Multiplier Scale (second)",
+          "Value (e.g. for input 1)",
+        ],
+        rows: [
+          ["time.ms(value)", "1 / 1,000", "0.001"],
+          ["time.s(value)", "1", "1"],
+          ["time.m(value)", "1 * 60", "60"],
+          ["time.h(value)", "1 * 60 * 60", "3,600"],
+          ["time.d(value)", "1 * 60 * 60 * 24", "86,400"],
+          ["time.w(value)", "1 * 60 * 60 * 24 * 7", "604,800"],
+          ["time.m28(value)", "28 days (86,400 * 28)", "2,419,200"],
+          ["time.m29(value)", "29 days (86,400 * 29)", "2,505,600"],
+          ["time.m30(value)", "30 days (86,400 * 30)", "2,592,000"],
+          ["time.m31(value)", "31 days (86,400 * 31)", "2,678,400"],
+          ["time.y(value)", "365 days (86,400 * 365)", "31,536,000"],
+          ["time.ly(value)", "366 days (86,400 * 366)", "31,622,400"],
+        ],
+      },
+      {
         type: "code",
         language: "python",
         title: "time Helpers - API",
-        code: `from sizelib import time\n\nTIMEOUT = time.s(30)        # 30 s\nCACHE_TTL = time.m(15)      # 900 s\nTOKEN_EXPIRY = time.h(2)    # 7200 s\nWORKER_WAIT = time.ms(500)  # 0.5 s`,
+        code: `from sizelib import time\n\n# Standard time unit helpers\nTIMEOUT = time.s(30)          # 30 s\nCACHE_TTL = time.m(15)        # 900 s\nTOKEN_EXPIRY = time.h(2)      # 7200 s\n\n# Month duration helpers (28, 29, 30, and 31-day months)\nFEB_NON_LEAP = time.m28(1)    # 2419200 s (28 days)\nFEB_LEAP = time.m29(1)        # 2505600 s (29 days)\nSHORT_MONTH = time.m30(1)     # 2592000 s (30 days)\nLONG_MONTH = time.m31(1)      # 2678400 s (31 days)\n\n# Year duration helpers (regular and leap years)\nREGULAR_YEAR = time.y(1)      # 31536000 s (365 days)\nLEAP_YEAR = time.ly(1)        # 31622400 s (366 days)`,
       },
     ],
   },
@@ -273,8 +295,9 @@ export const docsData: Record<string, DocPage> = {
       {
         type: "list",
         items: [
-          "**Duration Formatting –** Converts raw second values into readable duration strings like `500 ms`, `1 m`, `2 h`, `1 d`.",
-          "**Max Unit Resolution –** Automatically selects the largest unit fitting the duration.",
+          "**Duration Formatting –** Converts raw second values into clean, readable duration strings like `5 ms`, `45 s`, `1.50 h`, `2 d`.",
+          "**Smart Decimal Precision –** Formats floats/decimals cleanly up to 2 decimal places.",
+          "**Automatic Unit Escalation –** Automatically escalates duration steps across ms, s, m, h, d, and w.",
         ],
       },
       {
@@ -297,10 +320,21 @@ export const docsData: Record<string, DocPage> = {
         },
       },
       {
+        type: "table",
+        headers: ["Unit", "Scale Divisors", "Unit Escalation Order"],
+        rows: [
+          [
+            "Duration Units",
+            "1000ms / 60s / 60m / 24h / 7d",
+            "ms -> s -> m -> h -> d -> w",
+          ],
+        ],
+      },
+      {
         type: "code",
         language: "python",
         title: "human_time() - API",
-        code: `from sizelib import human_time, time\n\nprint(human_time(0.005))        # Output: 5 ms\nprint(human_time(time.s(45)))   # Output: 45 s\nprint(human_time(time.m(90)))   # Output: 1.50 h\nprint(human_time(time.h(2)))    # Output: 2 h`,
+        code: `from sizelib import human_time, time\n\nprint(human_time(0.005))        # Output: 5 ms\nprint(human_time(time.s(45)))   # Output: 45 s\nprint(human_time(time.m(90)))   # Output: 1.50 h\nprint(human_time(time.h(2)))    # Output: 2 h\nprint(human_time(time.d(1)))    # Output: 1 d`,
       },
     ],
   },
