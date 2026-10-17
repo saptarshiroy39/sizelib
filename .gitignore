@@ -23,6 +23,8 @@ ENV/
 
 # Local Testing / Temporary Data
 test/
+test.txt
+test.md
 test.py
 test.ipynb
 data.csv
