@@ -20,11 +20,13 @@ dist/
 *.egg-info/
 sizelib.egg-info/
 
-
-# Test
+# Local Testing / Temporary Data
 test/
+test.txt
+test.md
 test.py
 test.ipynb
 data.csv
 debug_test.py
-.*.back
+*.back
+copy.*
