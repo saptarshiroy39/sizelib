@@ -4,14 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sizelib"
-version = "0.2.3"
-description = "A Python Library for Calculating and Humanizing file sizes & times."
+version = "0.3.0"
+
+description = "A Python Library for Calculating and Humanizing file sizes, times & frequencies."
 authors = [{name = "Saptarshi Roy"}]
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.8"
 dependencies = []
-keywords = ["size", "bytes", "file-size", "time", "humanize", "utility", "formatting"]
+keywords = ["size", "bytes", "file-size", "time", "frequency", "freq", "humanize", "utility", "formatting"]
+
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
