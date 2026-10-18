@@ -5,7 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2026-09-01
+
+### Added
+- Added frequency scaling helpers in `sizelib.freq`: `hz()`, `khz()`, `mhz()`, `ghz()`, `thz()`, `phz()`, `ehz()`, `zhz()`, and `yhz()`.
+- Added `human_freq()` function in `_human_freq.py` for formatting frequency values into human-readable strings (e.g. `44.10 kHz`, `800 MHz`, `3.20 GHz`, `1.50 THz`).
+- Added dedicated `FREQ_SDK.md` reference guide.
+- Added `/freq` and `/human_freq` reference documentation and search integration in documentation web app.
+
 ## [0.2.3] - 2026-08-11
+
 
 ### Added
 - Added month scaling helpers in `sizelib.time`: `m28()`, `m29()`, `m30()`, `m31()` (for 28, 29, 30, and 31-day month second calculations).

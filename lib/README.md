@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://pypi.org/project/sizelib"><b>sizelib</b></a> is a lightweight, type-safe Python Library for working with and humanizing file sizes and time durations. It offers clean, type-preserving unit helpers (supporting both <code>int</code> and <code>float</code>) and loop-based human-readable string conversions.
+  <a href="https://pypi.org/project/sizelib"><b>sizelib</b></a> is a lightweight, type-safe Python Library for working with and humanizing file sizes, time durations, and frequencies. It offers clean, type-preserving unit helpers (supporting both <code>int</code> and <code>float</code>) and loop-based human-readable string conversions.
 </p>
 
 <p align="center">
@@ -97,6 +97,35 @@ print(human_time(time.m(90)))  # Output: 1.50 h
 print(human_time(time.h(2.5)))  # Output: 2.50 h
 ```
 
+`Frequency Helper Functions`
+
+```python
+from sizelib import freq
+
+# Define frequency constraints cleanly in Hz (supports hz, khz, mhz, ghz, thz, phz, ehz, zhz, yhz)
+CPU_BASE_CLOCK = freq.ghz(3.2)  # 3.2 GHz (3200000000.0 Hz)
+RAM_SPEED = freq.mhz(3200)  # 3200 MHz (3200000000 Hz)
+AUDIO_SAMPLE_RATE = freq.khz(44.1)  # 44.1 kHz (44100.0 Hz)
+
+# Variables, expressions, and type preservation (int/float) are supported
+multiplier = 4.5
+custom_clock = freq.ghz(multiplier)  # 4.5 GHz (4500000000.0 Hz)
+print(type(freq.mhz(800)))  # Output: <class 'int'>
+print(type(freq.ghz(4.8)))  # Output: <class 'float'>
+```
+
+`Humanize Frequencies (human_freq)`
+
+```python
+from sizelib import freq, human_freq
+
+# Frequency formatting across Hz through YHz
+print(human_freq(44100))  # Output: 44.10 kHz
+print(human_freq(freq.mhz(800)))  # Output: 800 MHz
+print(human_freq(freq.ghz(3.2)))  # Output: 3.20 GHz
+print(human_freq(freq.thz(1.5)))  # Output: 1.50 THz
+```
+
 ---
 
 ## ✳️ _Features_
@@ -105,6 +134,7 @@ print(human_time(time.h(2.5)))  # Output: 2.50 h
 | :---: | :---: |
 | **Size Helpers** | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `pb`, `eb`, `zb`, `yb`, `kib`, `mib`, `gib`, `tib`, `pib`, `eib`, `zib`, `yib`) |
 | **Time Helpers** | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`, `m28`, `m29`, `m30`, `m31`, `y`, `ly`) |
+| **Frequency Helpers** | Clean scaling for frequency units (`hz`, `khz`, `mhz`, `ghz`, `thz`, `phz`, `ehz`, `zhz`, `yhz`) |
 | **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly) |
 | **Custom Bases** | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats |
 | **Ultra Minimalism** | Zero external dependencies with an optimized, lightweight iteration algorithm |
@@ -115,7 +145,7 @@ print(human_time(time.h(2.5)))  # Output: 2.50 h
 
 | # | COMPONENT | DESCRIPTION | STACK |
 | :---: | :---: | :---: | :---: |
-| 1️⃣ | **Sizelib SDK** | Python library for size & time calculations and humanization | **_Python_** |
+| 1️⃣ | **Sizelib SDK** | Python library for size, time & frequency calculations and humanization | **_Python_** |
 | 2️⃣ | **Sizelib Docs** | Official documentation & web interface | **_Next.js_**, **_Tailwind_**, **_Vercel_** |
 
 ---
@@ -123,3 +153,4 @@ print(human_time(time.h(2.5)))  # Output: 2.50 h
 <p align="center">
   Made with 📄 by <a href="https://hirishi.in">Saptarshi Roy</a>
 </p>
+
