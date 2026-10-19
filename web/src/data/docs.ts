@@ -65,6 +65,8 @@ export const navigationItems = [
       { title: "human_size() - Format Bytes", href: "/human_size" },
       { title: "time - Time Helpers", href: "/time" },
       { title: "human_time() - Format Times", href: "/human_time" },
+      { title: "freq - Frequency Helpers", href: "/freq" },
+      { title: "human_freq() - Format Frequency", href: "/human_freq" },
     ],
   },
   {
@@ -82,15 +84,17 @@ export const docsData: Record<string, DocPage> = {
     blocks: [
       {
         type: "paragraph",
-        text: "sizelib is a Python library for calculating and humanizing file sizes & times. It offers a zero-overhead and highly readable API.",
+        text: "sizelib is a Python library for calculating and humanizing file sizes, times & frequencies. It offers a zero-overhead and highly readable API.",
       },
       {
         type: "list",
         items: [
           "**Size Helper Functions –** Define constraints easily using binary (base 2 / 1024) or decimal (base 10 / 1000) helper methods.",
           "**Humanizing Byte Sizes –** Convert raw byte values back into clean, readable strings using `human_size()`.",
-          "**Time Helper Functions –** Define time units cleanly in seconds (`ms`, `s`, `m`, `h`, `d`, `w`).",
+          "**Time Helper Functions –** Define time units cleanly in seconds (`ms`, `s`, `m`, `h`, `d`, `w`, `m28`..`m31`, `y`, `ly`).",
           "**Humanizing Times –** Convert raw second values into readable duration strings using `human_time()`.",
+          "**Frequency Helper Functions –** Define frequency units cleanly in Hertz (`hz`, `khz`, `mhz`, `ghz`, `thz`, `phz`, `ehz`, `zhz`, `yhz`).",
+          "**Humanizing Frequencies –** Convert raw Hertz values into readable frequency strings using `human_freq()`.",
           "**Type Preservation –** Dynamically maintains input types (`int` or `float`) across all calculations.",
           "**Zero Overhead & Dependencies –** Pure-Python library with zero external dependencies.",
         ],
@@ -228,6 +232,61 @@ export const docsData: Record<string, DocPage> = {
       },
     ],
   },
+  freq: {
+    title: "freq - Frequency Helpers",
+    blocks: [
+      {
+        type: "list",
+        items: [
+          "**Frequency Scaling Helpers –** Methods like `hz()`, `khz()`, `mhz()`, `ghz()`, `thz()`, `phz()`, `ehz()`, `zhz()`, and `yhz()` return Hertz-scaled calculations.",
+          "**Type Preservation –** Maintains input types (`int` or `float`) for clean arithmetic without casting.",
+        ],
+      },
+      {
+        type: "api",
+        name: "freq",
+        signature: "sizelib.freq.<helper>(value: int | float) -> int | float",
+        description: "Scales frequency value relative to Hertz (Hz).",
+        parameters: [
+          {
+            name: "value",
+            type: "int | float",
+            required: true,
+            description: "The value to scale (e.g. number of gigahertz).",
+          },
+        ],
+        returns: {
+          type: "int | float",
+          description: "Scaled frequency value in Hertz (Hz).",
+        },
+      },
+      {
+        type: "table",
+        headers: [
+          "Helper Method",
+          "Multiplier Scale (Hertz)",
+          "Value (e.g. for input 1)",
+        ],
+        rows: [
+          ["freq.hz(value)", "1", "1"],
+          ["freq.khz(value)", "1,000", "1,000"],
+          ["freq.mhz(value)", "1,000^2", "1,000,000"],
+          ["freq.ghz(value)", "1,000^3", "1,000,000,000"],
+          ["freq.thz(value)", "1,000^4", "1,000,000,000,000"],
+          ["freq.phz(value)", "1,000^5", "1,000,000,000,000,000"],
+          ["freq.ehz(value)", "1,000^6", "1,000,000,000,000,000,000"],
+          ["freq.zhz(value)", "1,000^7", "1,000,000,000,000,000,000,000"],
+          ["freq.yhz(value)", "1,000^8", "1,000,000,000,000,000,000,000,000"],
+        ],
+      },
+      {
+        type: "code",
+        language: "python",
+        title: "freq Helpers - API",
+        code: `from sizelib import freq\n\n# Define frequency constraints cleanly in Hz\nCPU_BASE_CLOCK = freq.ghz(3.2)       # 3.2 GHz (3200000000.0 Hz)\nRAM_SPEED = freq.mhz(3200)           # 3200 MHz (3200000000 Hz)\nAUDIO_SAMPLE_RATE = freq.khz(44.1)   # 44.1 kHz (44100.0 Hz)\nRADIO_BAND = freq.mhz(100)           # 100 MHz (100000000 Hz)`,
+      },
+    ],
+  },
   human_size: {
     title: "human_size() - Format Bytes",
     blocks: [
@@ -338,6 +397,56 @@ export const docsData: Record<string, DocPage> = {
       },
     ],
   },
+  human_freq: {
+    title: "human_freq() - Format Frequency",
+    blocks: [
+      {
+        type: "list",
+        items: [
+          "**Frequency Formatting –** Converts raw Hertz values into clean, readable frequency strings like `44.10 kHz`, `800 MHz`, `3.20 GHz`.",
+          "**Smart Decimal Precision –** Formats floats/decimals cleanly up to 2 decimal places.",
+          "**Full SI Range –** Automatically escalates across Hz, kHz, MHz, GHz, THz, PHz, EHz, ZHz, and YHz.",
+        ],
+      },
+      {
+        type: "api",
+        name: "human_freq",
+        signature: "sizelib.human_freq(hz: int | float) -> str",
+        description:
+          "Formats raw Hertz value into a clean, human-readable frequency string.",
+        parameters: [
+          {
+            name: "hz",
+            type: "int | float",
+            required: true,
+            description: "The frequency in Hertz (Hz). Must not be negative.",
+          },
+        ],
+        returns: {
+          type: "str",
+          description: "Formatted human-readable frequency string.",
+        },
+      },
+      {
+        type: "table",
+        headers: ["Unit", "Scale Divisor", "Unit Escalation Order"],
+        rows: [
+          [
+            "Frequency Units",
+            "1000",
+            "Hz -> kHz -> MHz -> GHz -> THz -> PHz -> EHz -> ZHz -> YHz",
+          ],
+        ],
+      },
+      {
+        type: "code",
+        language: "python",
+        title: "human_freq() - API",
+        code: `from sizelib import freq, human_freq\n\nprint(human_freq(44100))             # Output: 44.10 kHz\nprint(human_freq(freq.mhz(800)))     # Output: 800 MHz\nprint(human_freq(freq.ghz(3.2)))     # Output: 3.20 GHz\nprint(human_freq(freq.thz(1.5)))     # Output: 1.50 THz`,
+      },
+    ],
+  },
+
   author: {
     title: "Author",
     blocks: [

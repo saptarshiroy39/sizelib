@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sizelib.hirishi.in"),
   title: "Sizelib",
   description:
-    "A Python Library for Calculating and Humanizing file sizes & times.",
+    "A Python Library for Calculating and Humanizing file sizes, times & frequencies.",
   applicationName: "Sizelib",
   keywords: [
     "Sizelib",
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "https://sizelib.hirishi.in",
     "Python Library",
     "File Size",
+    "Time",
+    "Frequency",
+    "Hertz",
     "Humanize",
     "Bytes Utility",
     "Python",
@@ -49,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sizelib",
     description:
-      "A Python Library for Calculating and Humanizing file sizes & times.",
+      "A Python Library for Calculating and Humanizing file sizes, times & frequencies.",
     url: "https://sizelib.hirishi.in",
     siteName: "Sizelib",
     images: [
@@ -68,11 +71,12 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sizelib",
     description:
-      "A Python Library for Calculating and Humanizing file sizes & times.",
+      "A Python Library for Calculating and Humanizing file sizes, times & frequencies.",
     images: ["https://sizelib.hirishi.in/OG.png"],
     site: "@saptarshiroy39",
     creator: "@saptarshiroy39",
   },
+
 
   icons: {
     icon: "/Sizelib.svg",

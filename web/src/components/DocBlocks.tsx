@@ -89,9 +89,21 @@ const API_FNS = new Set([
   "m31",
   "y",
   "ly",
+  "hz",
+  "khz",
+  "mhz",
+  "ghz",
+  "thz",
+  "phz",
+  "ehz",
+  "zhz",
+  "yhz",
+  "human_freq",
+  "freq",
   "size",
   "time",
 ]);
+
 const TYPES = new Set([
   "str",
   "dict",
