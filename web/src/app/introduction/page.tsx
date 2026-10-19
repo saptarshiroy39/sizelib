@@ -21,8 +21,8 @@ export default function Page() {
       <div className="h-px bg-border" />
 
       <p className="text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">
-        sizelib is a Python library for calculating and humanizing file sizes &amp;
-        times. It offers a zero-overhead and highly readable API.
+        sizelib is a Python library for calculating and humanizing file sizes,
+        times &amp; frequencies. It offers a zero-overhead and highly readable API.
       </p>
 
       <ul className="my-4 list-disc pl-6 text-sm text-muted-foreground space-y-6">
@@ -71,6 +71,22 @@ export default function Page() {
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             w
           </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            m28
+          </code>
+          ..
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            m31
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            y
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            ly
+          </code>
           ).
         </li>
         <li className="leading-relaxed whitespace-pre-wrap">
@@ -80,6 +96,58 @@ export default function Page() {
           Convert raw second values into readable duration strings using the{" "}
           <code className="font-mono text-xs font-bold text-sidebar-primary">
             human_time()
+          </code>{" "}
+          function.
+        </li>
+        <li className="leading-relaxed whitespace-pre-wrap">
+          <strong className="font-bold text-foreground/80">
+            Frequency Helper Functions –{" "}
+          </strong>
+          Define frequency constraints cleanly in Hertz using frequency unit methods (
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            hz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            khz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            mhz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            ghz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            thz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            phz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            ehz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            zhz
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            yhz
+          </code>
+          ).
+        </li>
+        <li className="leading-relaxed whitespace-pre-wrap">
+          <strong className="font-bold text-foreground/80">
+            Humanizing Frequencies –{" "}
+          </strong>
+          Convert raw Hertz values into readable frequency strings using the{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            human_freq()
           </code>{" "}
           function.
         </li>
@@ -104,6 +172,7 @@ export default function Page() {
           Pure-Python library with zero external dependencies.
         </li>
       </ul>
+
     </article>
   );
 }

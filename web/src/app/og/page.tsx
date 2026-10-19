@@ -4,7 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 export default function OG() {
-  const row1 = ["size.gib", "human_size", "time.h", "human_time"];
+  const row1 = [
+    "size.gib",
+    "human_size",
+    "time.h",
+    "human_time",
+    "freq.ghz",
+    "human_freq",
+  ];
   const row2 = ["Python", "pip", "uv", "PyPI"];
 
   return (
@@ -23,8 +30,9 @@ export default function OG() {
           </h1>
 
           <h1 className="text-muted-foreground text-2xl font-bold tracking-tight">
-            A Python Library for Calculating and Humanizing file sizes &amp; times.
+            A Python Library for Calculating and Humanizing file sizes, times &amp; frequencies.
           </h1>
+
 
           <h2 className="mb-4 text-3xl font-medium tracking-tight text-foreground text-center">
             Highly Readable • Preserves Types • Humanize

@@ -47,6 +47,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: "https://sizelib.hirishi.in/freq",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://sizelib.hirishi.in/human_freq",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+
+    {
       url: "https://sizelib.hirishi.in/author",
       lastModified,
       changeFrequency: "weekly",
