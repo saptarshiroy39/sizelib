@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-09-02
+
+### Added
+- Added data transfer rate scaling helpers in `sizelib.rate`:
+  - Binary bytes: `b_s()`, `kib_s()`, `mib_s()`, `gib_s()`, `tib_s()`, `pib_s()`, `eib_s()`, `zib_s()`, and `yib_s()`.
+  - Decimal bytes: `b_s()`, `kb_s()`, `mb_s()`, `gb_s()`, `tb_s()`, `pb_s()`, `eb_s()`, `zb_s()`, and `yb_s()`.
+  - Binary bits: `bps()`, `kibps()`, `mibps()`, `gibps()`, `tibps()`, `pibps()`, `eibps()`, `zibps()`, and `yibps()`.
+  - Decimal bits: `bps()`, `kbps()`, `mbps()`, `gbps()`, `tbps()`, `pbps()`, `ebps()`, `zbps()`, and `ybps()`.
+- Added `human_rate()` function in `_human_rate.py` for formatting byte transfer rate values into human-readable strings (e.g. `10 MiB/s`, `1.43 MiB/s`, `50 MB/s`) supporting binary (`base=2`) and decimal (`base=10`).
+- Added dedicated `RATE_SDK.md` reference guide.
+- Added `/rate` and `/human_rate` reference documentation and search integration in documentation web app.
+
 ## [0.3.0] - 2026-09-01
 
 ### Added
