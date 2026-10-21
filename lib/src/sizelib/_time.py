@@ -1,4 +1,17 @@
-from .config import MS, SEC, MIN, HOUR, DAY, WEEK, M28, M29, M30, M31, YEAR, LEAP_YEAR
+from .config import (
+    DAY,
+    HOUR,
+    LEAP_YEAR,
+    M28,
+    M29,
+    M30,
+    M31,
+    MIN,
+    MS,
+    SEC,
+    WEEK,
+    YEAR,
+)
 
 
 def ms(value: int | float) -> int | float:

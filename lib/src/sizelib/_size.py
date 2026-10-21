@@ -1,4 +1,22 @@
-from .config import BYTE, KIB, MIB, GIB, TIB, PIB, EIB, ZIB, YIB, KB, MB, GB, TB, PB, EB, ZB, YB
+from .config import (
+    BYTE,
+    EB,
+    EIB,
+    GB,
+    GIB,
+    KB,
+    KIB,
+    MB,
+    MIB,
+    PB,
+    PIB,
+    TB,
+    TIB,
+    YB,
+    YIB,
+    ZB,
+    ZIB,
+)
 
 
 def b(value: int | float) -> int | float:
