@@ -1,4 +1,14 @@
-from .config import EHZ, GHZ, HZ, KHZ, MHZ, PHZ, THZ, YHZ, ZHZ
+from .config import (
+    EHZ,
+    GHZ,
+    HZ,
+    KHZ,
+    MHZ,
+    PHZ,
+    THZ,
+    YHZ,
+    ZHZ,
+)
 
 
 def hz(value: int | float) -> int | float:

@@ -5,7 +5,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://pypi.org/project/sizelib"><b>sizelib</b></a> is a lightweight, type-safe Python Library for working with and humanizing file sizes, time durations, and frequencies. It offers clean, type-preserving unit helpers (supporting both <code>int</code> and <code>float</code>) and loop-based human-readable string conversions.
+  <a href="https://pypi.org/project/sizelib"><b>sizelib</b></a> is a lightweight, type-safe Python Library for working with and humanizing file sizes, time durations, frequencies, and data transfer rates. It offers clean, type-preserving unit helpers (supporting both <code>int</code> and <code>float</code>) and loop-based human-readable string conversions.
 </p>
 
 <p align="center">
@@ -126,6 +126,32 @@ print(human_freq(freq.ghz(3.2)))  # Output: 3.20 GHz
 print(human_freq(freq.thz(1.5)))  # Output: 1.50 THz
 ```
 
+`Rate Helper Functions`
+
+```python
+from sizelib import rate
+
+# Define bandwidth and bitrate constraints cleanly (supports b_s, kib_s..yib_s, kb_s..yb_s, bps, kibps..yibps, kbps..ybps)
+NETWORK_BANDWIDTH = rate.mbps(100)  # 100 Mbps (100000000 bits/s)
+BUFFER_RATE = rate.mibps(50)  # 50 Mibps (52428800 bits/s)
+INTERNET_SPEED = rate.gbps(1)  # 1 Gbps (1000000000 bits/s)
+DOWNLOAD_SPEED = rate.mb_s(12.5)  # 12.5 MB/s (12500000 bytes/s)
+DISK_WRITE_RATE = rate.mib_s(500)  # 500 MiB/s (524288000 bytes/s)
+
+`Humanize Rates (human_rate)`
+
+```python
+from sizelib import human_rate, rate
+
+# Default binary formatting (base 2 / 1024)
+print(human_rate(10485760))  # Output: 10 MiB/s
+print(human_rate(rate.gib_s(2.5)))  # Output: 2.50 GiB/s
+
+# Decimal formatting (base 10 / 1000)
+print(human_rate(20000000000, base=10))  # Output: 20 GB/s
+print(human_rate(rate.kb_s(5), base=10))  # Output: 5 KB/s
+```
+
 ---
 
 ## ✳️ _Features_
@@ -135,6 +161,7 @@ print(human_freq(freq.thz(1.5)))  # Output: 1.50 THz
 | **Size Helpers** | Standardized functions for all major divisions (`kb`, `mb`, `gb`, `tb`, `pb`, `eb`, `zb`, `yb`, `kib`, `mib`, `gib`, `tib`, `pib`, `eib`, `zib`, `yib`) |
 | **Time Helpers** | Clean scaling for duration units (`ms`, `s`, `m`, `h`, `d`, `w`, `m28`, `m29`, `m30`, `m31`, `y`, `ly`) |
 | **Frequency Helpers** | Clean scaling for frequency units (`hz`, `khz`, `mhz`, `ghz`, `thz`, `phz`, `ehz`, `zhz`, `yhz`) |
+| **Rate Helpers** | Clean scaling for data transfer rate units (`b_s`, `kib_s`..`yib_s`, `kb_s`..`yb_s`, `bps`, `kibps`..`yibps`, `kbps`..`ybps`) |
 | **Type Preservation** | Dynamically maintains input types (returns int/floats accordingly) |
 | **Custom Bases** | Support for both binary (`base=2` / 1024) and decimal (`base=10` / 1000) formats |
 | **Ultra Minimalism** | Zero external dependencies with an optimized, lightweight iteration algorithm |
@@ -145,7 +172,7 @@ print(human_freq(freq.thz(1.5)))  # Output: 1.50 THz
 
 | # | COMPONENT | DESCRIPTION | STACK |
 | :---: | :---: | :---: | :---: |
-| 1️⃣ | **Sizelib SDK** | Python library for size, time & frequency calculations and humanization | **_Python_** |
+| 1️⃣ | **Sizelib SDK** | Python library for size, time, frequency & rate calculations and humanization | **_Python_** |
 | 2️⃣ | **Sizelib Docs** | Official documentation & web interface | **_Next.js_**, **_Tailwind_**, **_Vercel_** |
 
 ---
@@ -153,4 +180,3 @@ print(human_freq(freq.thz(1.5)))  # Output: 1.50 THz
 <p align="center">
   Made with 📄 by <a href="https://hirishi.in">Saptarshi Roy</a>
 </p>
-
