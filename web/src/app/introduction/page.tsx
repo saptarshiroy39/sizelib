@@ -22,7 +22,7 @@ export default function Page() {
 
       <p className="text-sm text-foreground/80 leading-relaxed whitespace-pre-wrap">
         sizelib is a Python library for calculating and humanizing file sizes,
-        times &amp; frequencies. It offers a zero-overhead and highly readable API.
+        times, frequencies &amp; data transfer rates. It offers a zero-overhead and highly readable API.
       </p>
 
       <ul className="my-4 list-disc pl-6 text-sm text-muted-foreground space-y-6">
@@ -150,6 +150,40 @@ export default function Page() {
             human_freq()
           </code>{" "}
           function.
+        </li>
+        <li className="leading-relaxed whitespace-pre-wrap">
+          <strong className="font-bold text-foreground/80">
+            Rate Helper Functions –{" "}
+          </strong>
+          Define data transfer rate and bandwidth constraints cleanly using bit and byte rate methods (
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            bps
+          </code>
+          ..
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            ybps
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            b_s
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            kib_s
+          </code>
+          ..
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            yib_s
+          </code>
+          ,{" "}
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            kb_s
+          </code>
+          ..
+          <code className="font-mono text-xs font-bold text-sidebar-primary">
+            yb_s
+          </code>
+          ).
         </li>
         <li className="leading-relaxed whitespace-pre-wrap">
           <strong className="font-bold text-foreground/80">
