@@ -58,6 +58,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: "https://sizelib.hirishi.in/rate",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
+      url: "https://sizelib.hirishi.in/human_rate",
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
 
     {
       url: "https://sizelib.hirishi.in/author",
