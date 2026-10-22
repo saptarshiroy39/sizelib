@@ -67,6 +67,8 @@ export const navigationItems = [
       { title: "human_time() - Format Times", href: "/human_time" },
       { title: "freq - Frequency Helpers", href: "/freq" },
       { title: "human_freq() - Format Frequency", href: "/human_freq" },
+      { title: "rate - Rate Helpers", href: "/rate" },
+      { title: "human_rate() - Format Rate", href: "/human_rate" },
     ],
   },
   {
@@ -84,7 +86,7 @@ export const docsData: Record<string, DocPage> = {
     blocks: [
       {
         type: "paragraph",
-        text: "sizelib is a Python library for calculating and humanizing file sizes, times & frequencies. It offers a zero-overhead and highly readable API.",
+        text: "sizelib is a Python library for calculating and humanizing file sizes, times, frequencies & data transfer rates. It offers a zero-overhead and highly readable API.",
       },
       {
         type: "list",
@@ -95,6 +97,8 @@ export const docsData: Record<string, DocPage> = {
           "**Humanizing Times –** Convert raw second values into readable duration strings using `human_time()`.",
           "**Frequency Helper Functions –** Define frequency units cleanly in Hertz (`hz`, `khz`, `mhz`, `ghz`, `thz`, `phz`, `ehz`, `zhz`, `yhz`).",
           "**Humanizing Frequencies –** Convert raw Hertz values into readable frequency strings using `human_freq()`.",
+          "**Rate Helper Functions –** Define data transfer rate and bandwidth constraints cleanly (`bps`..`ybps`, `b_s`, `kib_s`..`yib_s`, `kb_s`..`yb_s`).",
+          "**Humanizing Rates –** Convert raw bit or byte rates into readable rate strings using `human_rate()`.",
           "**Type Preservation –** Dynamically maintains input types (`int` or `float`) across all calculations.",
           "**Zero Overhead & Dependencies –** Pure-Python library with zero external dependencies.",
         ],
@@ -443,6 +447,156 @@ export const docsData: Record<string, DocPage> = {
         language: "python",
         title: "human_freq() - API",
         code: `from sizelib import freq, human_freq\n\nprint(human_freq(44100))             # Output: 44.10 kHz\nprint(human_freq(freq.mhz(800)))     # Output: 800 MHz\nprint(human_freq(freq.ghz(3.2)))     # Output: 3.20 GHz\nprint(human_freq(freq.thz(1.5)))     # Output: 1.50 THz`,
+      },
+    ],
+  },
+  rate: {
+    title: "rate - Rate Helpers",
+    blocks: [
+      {
+        type: "list",
+        items: [
+          "**Bytes (Binary) Helpers –** `b_s()`, `kib_s()`, `mib_s()`, `gib_s()`, `tib_s()`, `pib_s()`, `eib_s()`, `zib_s()`, and `yib_s()` return binary (base 2 / 1024) byte-per-second unit calculations.",
+          "**Bytes (Decimal) Helpers –** `b_s()`, `kb_s()`, `mb_s()`, `gb_s()`, `tb_s()`, `pb_s()`, `eb_s()`, `zb_s()`, and `yb_s()` return decimal (base 10 / 1000) byte-per-second unit calculations.",
+          "**Bits (Binary) Helpers –** `bps()`, `kibps()`, `mibps()`, `gibps()`, `tibps()`, `pibps()`, `eibps()`, `zibps()`, and `yibps()` return binary (base 2 / 1024) bit-per-second unit calculations.",
+          "**Bits (Decimal) Helpers –** `bps()`, `kbps()`, `mbps()`, `gbps()`, `tbps()`, `pbps()`, `ebps()`, `zbps()`, and `ybps()` return decimal (base 10 / 1000) bit-per-second unit calculations.",
+          "**Type Preservation –** Preserves input types (`int` or `float`) across calculations without precision loss.",
+        ],
+      },
+      {
+        type: "api",
+        name: "rate",
+        signature: "sizelib.rate.<helper>(value: int | float) -> int | float",
+        description:
+          "Scales data transfer rate / bitrate value relative to bytes/s or bits/s.",
+        parameters: [
+          {
+            name: "value",
+            type: "int | float",
+            required: true,
+            description: "The rate value to scale (e.g. number of mebibytes/s or megabits/s).",
+          },
+        ],
+        returns: {
+          type: "int | float",
+          description: "Scaled rate value.",
+        },
+      },
+      {
+        type: "table",
+        headers: [
+          "Rate Type",
+          "Target Unit",
+          "Function Name",
+          "Multiplier",
+        ],
+        rows: [
+          ["Bytes (Binary)", "bytes/s", "rate.b_s(value)", "×1"],
+          ["Bytes (Binary)", "kibibytes/s", "rate.kib_s(value)", "×1,024"],
+          ["Bytes (Binary)", "mebibytes/s", "rate.mib_s(value)", "×1,048,576"],
+          ["Bytes (Binary)", "gibibytes/s", "rate.gib_s(value)", "×1,073,741,824"],
+          ["Bytes (Binary)", "tebibytes/s", "rate.tib_s(value)", "×1,099,511,627,776"],
+          ["Bytes (Binary)", "pebibytes/s", "rate.pib_s(value)", "×1,125,899,906,842,624"],
+          ["Bytes (Binary)", "exbibytes/s", "rate.eib_s(value)", "×1,152,921,504,606,846,976"],
+          ["Bytes (Binary)", "zebibytes/s", "rate.zib_s(value)", "×1,180,591,620,717,411,303,424"],
+          ["Bytes (Binary)", "yobibytes/s", "rate.yib_s(value)", "×1,208,925,819,614,629,174,706,176"],
+          ["Bytes (Decimal)", "bytes/s", "rate.b_s(value)", "×1"],
+          ["Bytes (Decimal)", "kilobytes/s", "rate.kb_s(value)", "×1,000"],
+          ["Bytes (Decimal)", "megabytes/s", "rate.mb_s(value)", "×1,000,000"],
+          ["Bytes (Decimal)", "gigabytes/s", "rate.gb_s(value)", "×1,000,000,000"],
+          ["Bytes (Decimal)", "terabytes/s", "rate.tb_s(value)", "×1,000,000,000,000"],
+          ["Bytes (Decimal)", "petabytes/s", "rate.pb_s(value)", "×1,000,000,000,000,000"],
+          ["Bytes (Decimal)", "exabytes/s", "rate.eb_s(value)", "×1,000,000,000,000,000,000"],
+          ["Bytes (Decimal)", "zettabytes/s", "rate.zb_s(value)", "×1,000,000,000,000,000,000,000"],
+          ["Bytes (Decimal)", "yottabytes/s", "rate.yb_s(value)", "×1,000,000,000,000,000,000,000,000"],
+          ["Bits (Binary)", "bits/s", "rate.bps(value)", "×1"],
+          ["Bits (Binary)", "kibibits/s", "rate.kibps(value)", "×1,024"],
+          ["Bits (Binary)", "mebibits/s", "rate.mibps(value)", "×1,048,576"],
+          ["Bits (Binary)", "gibibits/s", "rate.gibps(value)", "×1,073,741,824"],
+          ["Bits (Binary)", "tebibits/s", "rate.tibps(value)", "×1,099,511,627,776"],
+          ["Bits (Binary)", "pebibits/s", "rate.pibps(value)", "×1,125,899,906,842,624"],
+          ["Bits (Binary)", "exbibits/s", "rate.eibps(value)", "×1,152,921,504,606,846,976"],
+          ["Bits (Binary)", "zebibits/s", "rate.zibps(value)", "×1,180,591,620,717,411,303,424"],
+          ["Bits (Binary)", "yobibits/s", "rate.yibps(value)", "×1,208,925,819,614,629,174,706,176"],
+          ["Bits (Decimal)", "bits/s", "rate.bps(value)", "×1"],
+          ["Bits (Decimal)", "kilobits/s", "rate.kbps(value)", "×1,000"],
+          ["Bits (Decimal)", "megabits/s", "rate.mbps(value)", "×1,000,000"],
+          ["Bits (Decimal)", "gigabits/s", "rate.gbps(value)", "×1,000,000,000"],
+          ["Bits (Decimal)", "terabits/s", "rate.tbps(value)", "×1,000,000,000,000"],
+          ["Bits (Decimal)", "petabits/s", "rate.pbps(value)", "×1,000,000,000,000,000"],
+          ["Bits (Decimal)", "exabits/s", "rate.ebps(value)", "×1,000,000,000,000,000,000"],
+          ["Bits (Decimal)", "zettabits/s", "rate.zbps(value)", "×1,000,000,000,000,000,000,000"],
+          ["Bits (Decimal)", "yottabits/s", "rate.ybps(value)", "×1,000,000,000,000,000,000,000,000"],
+        ],
+      },
+      {
+        type: "code",
+        language: "python",
+        title: "rate Helpers - API",
+        code: `from sizelib import rate\n\n# Define bandwidth and bitrate constraints\nNETWORK_BANDWIDTH = rate.mbps(100)      # 100 Mbps (100000000 bits/s)\nBUFFER_RATE = rate.mibps(50)            # 50 Mibps (52428800 bits/s)\nINTERNET_SPEED = rate.gbps(1)           # 1 Gbps (1000000000 bits/s)\nDOWNLOAD_SPEED = rate.mb_s(12.5)        # 12.5 MB/s (12500000 bytes/s)\nDISK_WRITE_RATE = rate.mib_s(500)       # 500 MiB/s (524288000 bytes/s)`,
+      },
+    ],
+  },
+  human_rate: {
+    title: "human_rate() - Format Rate",
+    blocks: [
+      {
+        type: "list",
+        items: [
+          "**String Formatting –** Converts raw byte transfer rate values into readable rate strings like `10 MiB/s` or `50 MB/s`.",
+          "**Smart Decimal Precision –** Formats floats/decimals cleanly up to 2 decimal places.",
+          "**Dual Bases –** Supports binary bytes (default `base=2`) and decimal bytes (`base=10`).",
+        ],
+      },
+      {
+        type: "api",
+        name: "human_rate",
+        signature:
+          "sizelib.human_rate(rate_bytes: int | float, base: int = 2) -> str",
+        description:
+          "Formats a raw byte transfer rate into a clean, human-readable speed string.",
+        parameters: [
+          {
+            name: "rate_bytes",
+            type: "int | float",
+            required: true,
+            description:
+              "The raw rate in bytes/s. Must not be negative.",
+          },
+          {
+            name: "base",
+            type: "int",
+            required: false,
+            description:
+              "Unit base (2 or 10). Defaults to 2 (binary 1024).",
+          },
+        ],
+        returns: {
+          type: "str",
+          description: "Formatted human-readable rate string.",
+        },
+      },
+      {
+        type: "table",
+        headers: ["Base", "Divisor", "Unit Escalation Order"],
+        rows: [
+          [
+            "Base 2 (Binary)",
+            "1024",
+            "B/s -> KiB/s -> MiB/s -> GiB/s -> TiB/s -> PiB/s -> EiB/s -> ZiB/s -> YiB/s",
+          ],
+          [
+            "Base 10 (Decimal)",
+            "1000",
+            "B/s -> KB/s -> MB/s -> GB/s -> TB/s -> PB/s -> EB/s -> ZB/s -> YB/s",
+          ],
+        ],
+      },
+      {
+        type: "code",
+        language: "python",
+        title: "human_rate() - API",
+        code: `from sizelib import human_rate, rate\n\n# Default binary formatting (base 2 / 1024)\nprint(human_rate(10485760))              # Output: 10 MiB/s\nprint(human_rate(1500000))               # Output: 1.43 MiB/s\nprint(human_rate(rate.gib_s(2.5)))       # Output: 2.50 GiB/s\n\n# Decimal formatting (base 10 / 1000)\nprint(human_rate(20000000000, base=10))  # Output: 20 GB/s\nprint(human_rate(1500000, base=10))      # Output: 1.50 MB/s\nprint(human_rate(rate.kb_s(5), base=10)) # Output: 5 KB/s`,
       },
     ],
   },
