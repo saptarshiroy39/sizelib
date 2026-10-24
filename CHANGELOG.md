@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Decimal bytes: `b_s()`, `kb_s()`, `mb_s()`, `gb_s()`, `tb_s()`, `pb_s()`, `eb_s()`, `zb_s()`, and `yb_s()`.
   - Binary bits: `bps()`, `kibps()`, `mibps()`, `gibps()`, `tibps()`, `pibps()`, `eibps()`, `zibps()`, and `yibps()`.
   - Decimal bits: `bps()`, `kbps()`, `mbps()`, `gbps()`, `tbps()`, `pbps()`, `ebps()`, `zbps()`, and `ybps()`.
-- Added `human_rate()` function in `_human_rate.py` for formatting byte transfer rate values into human-readable strings (e.g. `10 MiB/s`, `1.43 MiB/s`, `50 MB/s`) supporting binary (`base=2`) and decimal (`base=10`).
+- Added `human_rate()` function in `_human_rate.py` for formatting data rate values into human-readable strings (e.g. `10 MiB/s`, `20 GB/s`, `100 Mbps`, `2 Mibps`) supporting binary bytes (`KiB/s`), decimal bytes (`KB/s`), binary bits (`Kibps`), and decimal bits (`kbps`).
 - Added dedicated `RATE_SDK.md` reference guide.
 - Added `/rate` and `/human_rate` reference documentation and search integration in documentation web app.
 
