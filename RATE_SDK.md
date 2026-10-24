@@ -123,14 +123,14 @@ print(type(THROUGHPUT))                 # Output: <class 'float'>
 
 ## `human_rate()` - Format Rates
 
-- **String Formatting –** Converts raw byte transfer rate values into readable rate strings like `10 MiB/s` or `50 MB/s`.
+- **String Formatting –** Converts raw bytes or bits per second into readable rate strings like `10 MiB/s`, `20 GB/s`, or `100 Mbps`.
 - **Smart Decimal Precision –** Auto-rounds and formats fractional rates cleanly up to 2 decimal places.
-- **Dual Bases –** Supports base=2 (binary 1024) and base=10 (decimal 1000) formatting output units.
+- **Dual Bases & Bitrate Modes –** Supports binary bytes (`KiB/s`), decimal bytes (`KB/s`), binary bits (`Kibps`), and decimal bits (`kbps`).
 
 ### API Signature
 
 ```python
-sizelib.human_rate(rate_bytes: int | float, base: int = 2) -> str
+sizelib.human_rate(rate_val: int | float, base: int | None = None, bits: bool = False) -> str
 ```
 
 ### Output Unit Hierarchy Scale
@@ -139,6 +139,8 @@ sizelib.human_rate(rate_bytes: int | float, base: int = 2) -> str
 | :--- | :--- | :--- |
 | **Base 2 (Binary)** | 1024 | B/s &rarr; KiB/s &rarr; MiB/s &rarr; GiB/s &rarr; TiB/s &rarr; PiB/s &rarr; EiB/s &rarr; ZiB/s &rarr; YiB/s |
 | **Base 10 (Decimal)** | 1000 | B/s &rarr; KB/s &rarr; MB/s &rarr; GB/s &rarr; TB/s &rarr; PB/s &rarr; EB/s &rarr; ZB/s &rarr; YB/s |
+| **Base 2 (Binary), bits=True** | 1024 | bps &rarr; Kibps &rarr; Mibps &rarr; Gibps &rarr; Tibps &rarr; Pibps &rarr; Eibps &rarr; Zibps &rarr; Yibps |
+| **Base 10 (Decimal), bits=True** | 1000 | bps &rarr; kbps &rarr; Mbps &rarr; Gbps &rarr; Tbps &rarr; Pbps &rarr; Ebps &rarr; Zbps &rarr; Ybps |
 
 ### `human_rate()` - Usage
 
@@ -146,14 +148,21 @@ sizelib.human_rate(rate_bytes: int | float, base: int = 2) -> str
 from sizelib import human_rate, rate
 
 # Default binary formatting (base 2 / 1024)
-print(human_rate(10485760))              # Output: 10 MiB/s
-print(human_rate(1500000))               # Output: 1.43 MiB/s
-print(human_rate(rate.gib_s(2.5)))       # Output: 2.50 GiB/s
+print(human_rate(10485760))                         # Output: 10 MiB/s
+print(human_rate(1500000))                          # Output: 1.43 MiB/s
+print(human_rate(rate.gib_s(2.5)))                  # Output: 2.50 GiB/s
 
 # Decimal formatting (base 10 / 1000)
-print(human_rate(20000000000, base=10))  # Output: 20 GB/s
-print(human_rate(1500000, base=10))      # Output: 1.50 MB/s
-print(human_rate(rate.kb_s(5), base=10)) # Output: 5 KB/s
+print(human_rate(20000000000, base=10))             # Output: 20 GB/s
+print(human_rate(1500000, base=10))                 # Output: 1.50 MB/s
+print(human_rate(rate.kb_s(5), base=10))            # Output: 5 KB/s
+
+# Decimal bit rate formatting (bits=True)
+print(human_rate(rate.mbps(100), bits=True))        # Output: 100 Mbps
+print(human_rate(rate.gbps(1.5), bits=True))        # Output: 1.50 Gbps
+
+# Binary bit rate formatting (bits=True, base=2)
+print(human_rate(rate.mibps(2), base=2, bits=True)) # Output: 2 Mibps
 ```
 
 ### `human_rate()` - Edge Cases & Exceptions
@@ -161,18 +170,19 @@ print(human_rate(rate.kb_s(5), base=10)) # Output: 5 KB/s
 ```python
 from sizelib import human_rate
 
-# Zero rate input
-print(human_rate(0))                     # Output: 0 B/s
+# Zero rate inputs
+print(human_rate(0))                                # Output: 0 B/s
+print(human_rate(0, bits=True))                     # Output: 0 bps
 
 # Negative values raise ValueError
 try:
     human_rate(-5)
 except ValueError as e:
-    print(e)                             # Output: Rate cannot be negative
+    print(e)                                        # Output: Rate cannot be negative
 
 # Invalid base parameter raises ValueError
 try:
     human_rate(100, base=5)
 except ValueError as e:
-    print(e)                             # Output: Base must be 2 or 10
+    print(e)                                        # Output: Base must be 2 or 10
 ```
