@@ -394,9 +394,9 @@ export default function Page() {
         code={`from sizelib import size
 
 # Define constraints using binary (base 2) or decimal (base 10) helper methods
-MAX_UPLOAD_SIZE = size.mib(10)   # 10 MiB (10485760 bytes)
-CACHE_LIMIT = size.gib(2)        # 2 GiB (2147483648 bytes)
-USER_QUOTA = size.gb(50)         # 50 GB (50000000000 bytes)`}
+MAX_UPLOAD_SIZE = size.mib(10)  # 10 MiB (10485760 bytes)
+CACHE_LIMIT = size.gib(2)       # 2 GiB (2147483648 bytes)
+USER_QUOTA = size.gb(50)        # 50 GB (50000000000 bytes)`}
       />
 
       <CodeBlockRenderer
@@ -406,7 +406,7 @@ USER_QUOTA = size.gb(50)         # 50 GB (50000000000 bytes)`}
 
 # Variables and expressions are fully supported
 limit = 2
-custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)`}
+custom_limit = size.gib(limit)  # 2 GiB (2147483648 bytes)`}
       />
 
       <CodeBlockRenderer
@@ -416,12 +416,12 @@ custom_limit = size.gib(limit)   # 2 GiB (2147483648 bytes)`}
 
 # Input types (int/float) are dynamically preserved
 MAX_UPLOAD_SIZE = size.mib(10)
-print(MAX_UPLOAD_SIZE)           # Output: 10485760
-print(type(MAX_UPLOAD_SIZE))     # Output: <class 'int'>
+print(MAX_UPLOAD_SIZE)          # Output: 10485760
+print(type(MAX_UPLOAD_SIZE))    # Output: <class 'int'>
 
 BUFFER_SIZE = size.kb(1.5)
-print(BUFFER_SIZE)               # Output: 1500.0
-print(type(BUFFER_SIZE))         # Output: <class 'float'>`}
+print(BUFFER_SIZE)              # Output: 1500.0
+print(type(BUFFER_SIZE))        # Output: <class 'float'>`}
       />
     </article>
   );
