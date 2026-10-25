@@ -252,19 +252,19 @@ export default function Page() {
         code={`from sizelib import time
 
 # Standard time unit helpers
-TIMEOUT = time.s(30)          # 30 s
-CACHE_TTL = time.m(15)        # 900 s
-TOKEN_EXPIRY = time.h(2)      # 7200 s
+TIMEOUT = time.s(30)            # 30 s
+CACHE_TTL = time.m(15)          # 900 s
+TOKEN_EXPIRY = time.h(2)        # 7200 s
 
 # Month duration helpers (28, 29, 30, and 31-day months)
-FEB_NON_LEAP = time.m28(1)    # 2419200 s (28 days)
-FEB_LEAP = time.m29(1)        # 2505600 s (29 days)
-SHORT_MONTH = time.m30(1)     # 2592000 s (30 days)
-LONG_MONTH = time.m31(1)      # 2678400 s (31 days)
+FEB_NON_LEAP = time.m28(1)      # 2419200 s (28 days)
+FEB_LEAP = time.m29(1)          # 2505600 s (29 days)
+SHORT_MONTH = time.m30(1)       # 2592000 s (30 days)
+LONG_MONTH = time.m31(1)        # 2678400 s (31 days)
 
 # Year duration helpers (regular and leap years)
-REGULAR_YEAR = time.y(1)      # 31536000 s (365 days)
-LEAP_YEAR = time.ly(1)        # 31622400 s (366 days)`}
+REGULAR_YEAR = time.y(1)        # 31536000 s (365 days)
+LEAP_YEAR = time.ly(1)          # 31622400 s (366 days)`}
       />
 
       <CodeBlockRenderer
@@ -274,7 +274,7 @@ LEAP_YEAR = time.ly(1)        # 31622400 s (366 days)`}
 
 # Variables and expressions are fully supported
 limit = 5
-custom_timeout = time.m(limit)   # 300 s`}
+custom_timeout = time.m(limit)  # 300 s`}
       />
 
       <CodeBlockRenderer
@@ -284,12 +284,12 @@ custom_timeout = time.m(limit)   # 300 s`}
 
 # Input types (int/float) are dynamically preserved
 TIMEOUT = time.s(30)
-print(TIMEOUT)           # Output: 30
-print(type(TIMEOUT))     # Output: <class 'int'>
+print(TIMEOUT)                  # Output: 30
+print(type(TIMEOUT))            # Output: <class 'int'>
 
 INTERVAL = time.s(1.5)
-print(INTERVAL)          # Output: 1.5
-print(type(INTERVAL))    # Output: <class 'float'>`}
+print(INTERVAL)                 # Output: 1.5
+print(type(INTERVAL))           # Output: <class 'float'>`}
       />
     </article>
   );

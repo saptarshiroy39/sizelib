@@ -207,10 +207,10 @@ export default function Page() {
         code={`from sizelib import freq
 
 # Define frequency constraints cleanly in Hz
-CPU_BASE_CLOCK = freq.ghz(3.2)       # 3.2 GHz (3200000000.0 Hz)
-RAM_SPEED = freq.mhz(3200)           # 3200 MHz (3200000000 Hz)
-AUDIO_SAMPLE_RATE = freq.khz(44.1)   # 44.1 kHz (44100.0 Hz)
-RADIO_BAND = freq.mhz(100)           # 100 MHz (100000000 Hz)`}
+CPU_BASE_CLOCK = freq.ghz(3.2)      # 3.2 GHz (3200000000.0 Hz)
+RAM_SPEED = freq.mhz(3200)          # 3200 MHz (3200000000 Hz)
+AUDIO_SAMPLE_RATE = freq.khz(44.1)  # 44.1 kHz (44100.0 Hz)
+RADIO_BAND = freq.mhz(100)          # 100 MHz (100000000 Hz)`}
       />
 
       <CodeBlockRenderer
@@ -220,7 +220,7 @@ RADIO_BAND = freq.mhz(100)           # 100 MHz (100000000 Hz)`}
 
 # Variables and expressions are fully supported
 multiplier = 4.5
-clock_speed = freq.ghz(multiplier)   # 4.5 GHz (4500000000.0 Hz)`}
+clock_speed = freq.ghz(multiplier)  # 4.5 GHz (4500000000.0 Hz)`}
       />
 
       <CodeBlockRenderer
@@ -230,12 +230,12 @@ clock_speed = freq.ghz(multiplier)   # 4.5 GHz (4500000000.0 Hz)`}
 
 # Input types (int/float) are dynamically preserved
 BASE_CLOCK = freq.mhz(800)
-print(BASE_CLOCK)                    # Output: 800000000
-print(type(BASE_CLOCK))              # Output: <class 'int'>
+print(BASE_CLOCK)                   # Output: 800000000
+print(type(BASE_CLOCK))             # Output: <class 'int'>
 
 BOOST_CLOCK = freq.ghz(4.8)
-print(BOOST_CLOCK)                   # Output: 4800000000.0
-print(type(BOOST_CLOCK))             # Output: <class 'float'>`}
+print(BOOST_CLOCK)                  # Output: 4800000000.0
+print(type(BOOST_CLOCK))            # Output: <class 'float'>`}
       />
     </article>
   );
