@@ -7,7 +7,7 @@ from ._human_rate import human_rate
 from ._human_size import human_size
 from ._human_time import human_time
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 __all__ = [
     "size",
