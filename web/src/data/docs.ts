@@ -598,12 +598,12 @@ export const docsData: Record<string, DocPage> = {
             "B/s -> KB/s -> MB/s -> GB/s -> TB/s -> PB/s -> EB/s -> ZB/s -> YB/s",
           ],
           [
-            "Base 2 (Binary), bits=True",
+            "Base 2, bits=True",
             "1024",
             "bps -> Kibps -> Mibps -> Gibps -> Tibps -> Pibps -> Eibps -> Zibps -> Yibps",
           ],
           [
-            "Base 10 (Decimal), bits=True",
+            "Base 10, bits=True",
             "1000",
             "bps -> kbps -> Mbps -> Gbps -> Tbps -> Pbps -> Ebps -> Zbps -> Ybps",
           ],
