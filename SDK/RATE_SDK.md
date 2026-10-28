@@ -139,8 +139,8 @@ sizelib.human_rate(rate_val: int | float, base: int | None = None, bits: bool = 
 | :--- | :--- | :--- |
 | **Base 2 (Binary)** | 1024 | B/s &rarr; KiB/s &rarr; MiB/s &rarr; GiB/s &rarr; TiB/s &rarr; PiB/s &rarr; EiB/s &rarr; ZiB/s &rarr; YiB/s |
 | **Base 10 (Decimal)** | 1000 | B/s &rarr; KB/s &rarr; MB/s &rarr; GB/s &rarr; TB/s &rarr; PB/s &rarr; EB/s &rarr; ZB/s &rarr; YB/s |
-| **Base 2 (Binary), bits=True** | 1024 | bps &rarr; Kibps &rarr; Mibps &rarr; Gibps &rarr; Tibps &rarr; Pibps &rarr; Eibps &rarr; Zibps &rarr; Yibps |
-| **Base 10 (Decimal), bits=True** | 1000 | bps &rarr; kbps &rarr; Mbps &rarr; Gbps &rarr; Tbps &rarr; Pbps &rarr; Ebps &rarr; Zbps &rarr; Ybps |
+| **Base 2, bits=True** | 1024 | bps &rarr; Kibps &rarr; Mibps &rarr; Gibps &rarr; Tibps &rarr; Pibps &rarr; Eibps &rarr; Zibps &rarr; Yibps |
+| **Base 10, bits=True** | 1000 | bps &rarr; kbps &rarr; Mbps &rarr; Gbps &rarr; Tbps &rarr; Pbps &rarr; Ebps &rarr; Zbps &rarr; Ybps |
 
 ### `human_rate()` - Usage
 
