@@ -100,7 +100,7 @@ export default function Page() {
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                Base 2 (Binary), bits=True
+                Base 2, bits=True
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1024
@@ -111,7 +111,7 @@ export default function Page() {
             </tr>
             <tr className="hover:bg-muted/20 transition-colors">
               <td className="p-3 text-foreground/80 leading-normal font-bold">
-                Base 10 (Decimal), bits=True
+                Base 10, bits=True
               </td>
               <td className="p-3 text-foreground/80 leading-normal text-sidebar-primary font-bold">
                 1000
