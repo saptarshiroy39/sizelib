@@ -4,14 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 export default function OG() {
-  const row1 = [
-    "size.gib",
-    "human_size",
-    "time.h",
-    "human_time",
-    "freq.ghz",
-    "human_freq",
-  ];
+  const row1 = ["size", "time", "freq", "rate", "human"];
   const row2 = ["Python", "pip", "uv", "PyPI"];
 
   return (
