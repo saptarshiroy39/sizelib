@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import Search from "@/components/Search";
 
 interface NavbarProps {
@@ -47,10 +47,10 @@ export default function Navbar({ sidebarOpen, setSidebarOpen }: NavbarProps) {
 
         <div className="flex items-center gap-4 sm:gap-6 text-sm">
           <Search />
-          <AnimatedThemeToggler
+          <ThemeToggle
             id="nav-theme-toggle"
             title="Toggle Theme"
-            className="p-1 border rounded-full bg-accent hover:bg-accent/70 cursor-pointer flex items-center justify-center"
+            className="shrink-0 aspect-square"
           />
         </div>
       </div>
